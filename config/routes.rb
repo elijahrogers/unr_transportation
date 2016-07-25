@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'application#main'
-
+  get 'application/update' => 'application#update', :via => [:get, :post]
+  # match ':controller(/:action)', :via => [:get, :post]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

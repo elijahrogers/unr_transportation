@@ -17,6 +17,12 @@
 //= require underscore
 //= require gmaps/google
 
+window.onload = function() {
+  var object = document.getElementById('map_data');
+  var pass = object.getAttribute('data-pass');
+  var zones_raw = object.getAttribute('data-zones');
+  var zones = JSON.parse(zones_raw)
+
 var mapStyle = [
     {
         "featureType": "administrative",
@@ -97,15 +103,34 @@ var mapStyle = [
         ]
     }
 ];
-var handler = Gmaps.build('Google');
+
+var handler = Gmaps.build('Google')
 handler.buildMap({
     internal: {id: 'map'},
     provider: {
       zoom:      15,
       center:    new google.maps.LatLng(39.5439642, -119.8171444),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      styles:    mapStyle
+      styles:    mapStyle,
+      minZoom: 14,
+      streetViewControl: false,
+      mapTypeControl: false
     }
   },
-  function(){ }
+  onMapLoad
 );
+
+function onMapLoad(){
+  function addBounds(){
+    var ne_bound = new google.maps.LatLng(39.55659, -119.80425);
+    var sw_bound = new google.maps.LatLng(39.53389, -119.80159);
+    var bounds = new google.maps.LatLngBounds(sw_bound, ne_bound);
+    handler.fitBounds(bounds);
+  };
+  var polygons = handler.addPolygons(
+      zones,
+    { strokeColor: '#f4ff1c', fillColor: '#0423ff'}
+  );
+};
+
+};
