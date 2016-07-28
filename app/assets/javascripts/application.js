@@ -16,12 +16,16 @@
 //= require_tree .
 //= require underscore
 //= require gmaps/google
+//= require passes.js.coffee
 
 window.onload = function() {
   var object = document.getElementById('map_data');
   var pass = object.getAttribute('data-pass');
   var zones_raw = object.getAttribute('data-zones');
   var zones = JSON.parse(zones_raw)
+  console.log(zones);
+
+
 
 var mapStyle = [
     {
@@ -110,7 +114,7 @@ handler.buildMap({
     provider: {
       zoom:      15,
       center:    new google.maps.LatLng(39.5439642, -119.8171444),
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeId: google.maps.MapTypeId.HYBRID,
       styles:    mapStyle,
       minZoom: 14,
       streetViewControl: false,
