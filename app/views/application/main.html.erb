@@ -1,3 +1,4 @@
+<%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones}) %>
 <% grouped_options = {"Blue"=>[], "Purple"=>[], "Green"=>[], "Yellow"=>["1", "2", "3"], "Orange"=>[], "Silver"=>["1", "2", "3", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"], "Tan"=>[], "Evening"=>[], "East Campus Resident"=>[]} %>
 <div id="content">
   <div id="header">
@@ -17,3 +18,5 @@
     <p> _ </p>
   </div>
 </div>
+
+<div id="result">empty</div>

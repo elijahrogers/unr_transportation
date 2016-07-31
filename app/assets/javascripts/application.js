@@ -17,124 +17,62 @@
 //= require underscore
 //= require gmaps/google
 //= require passes.js.coffee
-
-window.onload = function() {
-  var object = document.getElementById('map_data');
-  var pass = object.getAttribute('data-pass');
-  var zones_raw = object.getAttribute('data-zones');
-  var zones = JSON.parse(zones_raw)
-  console.log(zones);
-
-
-
-var mapStyle = [
-    {
-        "featureType": "administrative",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#444444"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#f2f2f2"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 45
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#46bcec"
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    }
-];
-
 var handler = Gmaps.build('Google')
-handler.buildMap({
-    internal: {id: 'map'},
-    provider: {
-      zoom:      15,
-      center:    new google.maps.LatLng(39.5439642, -119.8171444),
-      mapTypeId: google.maps.MapTypeId.HYBRID,
-      styles:    mapStyle,
-      minZoom: 14,
-      streetViewControl: false,
-      mapTypeControl: false
-    }
-  },
-  onMapLoad
-);
+
+$(function() {
+  handler.buildMap({
+      internal: {id: 'map'},
+      provider: {
+        zoom:      15,
+        center:    new google.maps.LatLng(39.5439642, -119.8171444),
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        minZoom: 14,
+        streetViewControl: false,
+        mapTypeControl: false
+      }
+    },
+    onMapLoad
+  );
+
+  $('#pass').change(function() {
+    loadPass();
+  });
+  $('#number').change(function() {
+    loadPass();
+  });
+});
 
 function onMapLoad(){
-  function addBounds(){
-    var ne_bound = new google.maps.LatLng(39.55659, -119.80425);
-    var sw_bound = new google.maps.LatLng(39.53389, -119.80159);
-    var bounds = new google.maps.LatLngBounds(sw_bound, ne_bound);
-    handler.fitBounds(bounds);
-  };
-  var polygons = handler.addPolygons(
-      zones,
-    { strokeColor: '#f4ff1c', fillColor: '#0423ff'}
-  );
+  loadPolys();
 };
 
+function loadPolys(){
+  var zones = $('#map_data').data('zones');
+  console.log(zones);
+
+  handler.addPolygons(
+      zones,
+    { strokeColor: $('#strokeColor').text(), fillColor: '#0423ff'}
+  );
+}
+
+function addBounds(){
+  var ne_bound = new google.maps.LatLng(39.55659, -119.80425);
+  var sw_bound = new google.maps.LatLng(39.53389, -119.80159);
+  var bounds = new google.maps.LatLngBounds(sw_bound, ne_bound);
+  handler.fitBounds(bounds);
+};
+
+function loadPass(){
+  var params = {
+    "pass": $('#pass').val(),
+    "number": $('#number').val(),
+    "date": $('#date').val(),
+    "time": $('#time').val()
+  }
+  $.get( "/application/update", params, function( data ) {
+  console.log(data);
+  $('#map_data').data('zones', data['zones'])
+  loadPolys();
+});
 };
