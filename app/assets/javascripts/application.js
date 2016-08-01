@@ -16,13 +16,8 @@
 //= require_tree .
 //= require passes.js.coffee
 
-$(function() {
-
-});
-
-
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
+  window.map = new google.maps.Map(document.getElementById('map'), {
     center: {lat:39.5439642, lng: -119.8171444},
     scrollwheel: false,
     zoom: 15,
@@ -31,11 +26,12 @@ function initMap() {
     streetViewControl: false,
     mapTypeControl: false
   });
-  addZones(map);
+  addZones();
 }
 
-function addZones(map) {
+function addZones() {
   var zones = $('#map_data').data('zones');
+  window.overlays = []
   for (var i = 0; i < zones.length; i++) {
     var polygon = new google.maps.Polygon({
       paths: zones[i],
@@ -46,69 +42,39 @@ function addZones(map) {
       fillOpacity: 0.01
     });
     polygon.setMap(map);
+    overlays.push(polygon)
   }
 };
 
-// $('#pass').change(function() {
-//   loadPass();
-// });
-//
-// function loadPass(){
-//   var params = {
-//     "pass": $('#pass').val(),
-//     "number": $('#number').val(),
-//     "date": $('#date').val(),
-//     "time": $('#time').val()
-//   }
-//   $.get( "/application/update", params, function( data ) {
-//   console.log(data);
-//   $('#map_data').data('zones', data['zones'])
-//   addZones();
-// });
-// };
 
+function removeZones(){
+  while(overlays[0]){
+    overlays.pop().setMap(null);
+  }
+};
 
+$('#pass').change(function() {
+  loadPass();
+});
 
-// handler.buildMap({
-//     internal: {id: 'map'},
-//     provider: {
-//       zoom:      15,
-//       center:    new google.maps.LatLng(39.5439642, -119.8171444),
-//       mapTypeId: google.maps.MapTypeId.HYBRID,
-//       minZoom: 14,
-//       streetViewControl: false,
-//       mapTypeControl: false
-//     }
-//   },
-//   onMapLoad
-// );
-//
-//   $('#pass').change(function() {
-//     loadPass();
-//   });
-//   $('#number').change(function() {
-//     loadPass();
-//   });
-// });
-//
-// function onMapLoad(){
-//   loadPolys();
-// };
-//
-// function loadPolys(){
-//   var zones = $('#map_data').data('zones');
-//   console.log(zones);
-//
-//   handler.addPolygons(
-//       zones,
-//     { strokeColor: $('#strokeColor').text(), fillColor: '#0423ff'}
-//   );
-// }
-//
-// function addBounds(){
-//   var ne_bound = new google.maps.LatLng(39.55659, -119.80425);
-//   var sw_bound = new google.maps.LatLng(39.53389, -119.80159);
-//   var bounds = new google.maps.LatLngBounds(sw_bound, ne_bound);
-//   handler.fitBounds(bounds);
-// };
-//
+$('#number').change(function() {
+  loadPass();
+});
+
+$('#time').change(function() {
+  loadPass();
+});
+
+function loadPass(){
+  var params = {
+    "pass": $('#pass').val(),
+    "number": $('#number').val(),
+    "date": $('#date').val(),
+    "time": $('#time').val()
+  }
+  $.get( "/application/update", params, function(data) {
+    $('#map_data').data('zones', data['zones'])
+    removeZones();
+    addZones();
+  });
+};
