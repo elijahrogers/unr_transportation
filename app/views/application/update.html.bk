@@ -6,7 +6,7 @@
   </div>
   <p>
     <div id="map"></div>
-    <%= form_tag({ :action => "update" }, :method => "get") do %>
+    <%= form_tag({ :action => "application/update" }, :method => "get") do %>
       <%= select_tag(:pass, options_for_select(['Blue', 'Purple', 'Green', 'Yellow', 'Orange', 'Silver', 'Tan', 'Evening', 'East Campus Resident'])) %>
       <div id="hidden"><%= select_tag(:number, grouped_options_for_select(grouped_options)) %></div>
       <%= time_field_tag(:time, time = Time.now.strftime("%I:%M")) %>
@@ -18,5 +18,3 @@
     <p> _ </p>
   </div>
 </div>
-
-<div id="strokeColor">#f4ff1c</div>
