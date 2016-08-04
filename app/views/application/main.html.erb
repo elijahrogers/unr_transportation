@@ -10,12 +10,9 @@
       <%= select_tag(:pass, options_for_select(['Blue', 'Purple', 'Green', 'Yellow', 'Orange', 'Silver', 'Tan', 'Evening', 'East Campus Resident'])) %>
       <div id="hidden"><%= select_tag(:number, grouped_options_for_select(grouped_options)) %></div>
       <%= time_field_tag(:time, time = Time.now.strftime("%I:%M")) %>
-      <%= date_field_tag(:date, date = Date.current) %>
     <% end %>
   </p>
   <div id="footer">
     <p> _ </p>
   </div>
 </div>
-
-<div class="result">empty</div>

@@ -1,4 +1,4 @@
-module ParkingZones
+module UNRParkingZones
   def blue1
     [
       {lat: 39.55111, lng: -119.81866}, {lat: 39.55072, lng: -119.82133},
@@ -502,7 +502,7 @@ module ParkingZones
         {lat: 39.55016, lng: -119.81709 }, {lat: 39.55017, lng: -119.81714 },
         {lat: 39.54992, lng: -119.81715 }, {lat: 39.54993, lng: -119.81679 },
         {lat: 39.55017, lng: -119.8168 }, {lat: 39.55017, lng: -119.81686 },
-        {lat: 39.55021, lng: -119.81686 }, {lat: 39.5502, lng: -119.81709 }, 
+        {lat: 39.55021, lng: -119.81686 }, {lat: 39.5502, lng: -119.81709 },
       ]
     ]
   end
