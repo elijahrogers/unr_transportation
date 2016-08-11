@@ -1,0 +1,16 @@
+require 'spec_helper'
+
+describe ApplicationController do
+  describe 'main' do
+    it 'sets pass to empty string' do
+      expect(@pass).to equal('')
+    end
+  end
+
+  describe 'update' do
+    it 'sets correct parameters' do
+      post 'update', pass: 'Blue', number: '', time: '09:52'
+      expect(@pass).to equal('Blue')
+    end
+  end
+end

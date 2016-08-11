@@ -1,4 +1,7 @@
+include UNRParkingZones
+
 module UNRParkingZonesLogic
+
     def find_available_zones
       if @pass == 'Blue'
         @zones = [blue1, blue2, blue3]

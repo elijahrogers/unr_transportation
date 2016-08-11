@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  include UNRParkingZones
   include UNRParkingZonesLogic
 
   def main
-    @zones = [unr_outline]
+    @pass = ''
+    find_available_zones
   end
 
   def update
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     @number = params[:number]
     @time = (params[:time]).gsub(':', '').to_i
     find_available_zones
-    render json:{pass: @pass, number: @number, date: @date, time: @time, zones: @zones}
+    render json:{pass: @pass, number: @number, time: @time, zones: @zones}
   end
 
 end

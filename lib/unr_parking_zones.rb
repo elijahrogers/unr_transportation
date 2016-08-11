@@ -1,4 +1,5 @@
 module UNRParkingZones
+  
   def blue1
     [
       {lat: 39.55111, lng: -119.81866}, {lat: 39.55072, lng: -119.82133},
