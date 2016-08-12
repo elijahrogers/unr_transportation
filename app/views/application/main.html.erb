@@ -1,18 +1,14 @@
 <%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones}) %>
 <% grouped_options = {"Blue"=>[], "Purple"=>[], "Green"=>[], "Yellow"=>["1", "2", "3"], "Orange"=>[], "Silver"=>["1", "2", "3", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"], "Tan"=>[], "Evening"=>[], "East Campus Resident"=>[]} %>
 <div id="content">
-  <div id="header">
-    <h1>UNR Transportation</h1>
-  </div>
-  <p>
     <div id="map"></div>
-    <%= form_tag({ :action => "update" }, :method => "get") do %>
-      <%= select_tag(:pass, options_for_select(['Blue', 'Purple', 'Green', 'Yellow', 'Orange', 'Silver', 'Tan', 'Evening', 'East Campus Resident'])) %>
-      <div id="hidden"><%= select_tag(:number, grouped_options_for_select(grouped_options)) %></div>
-      <%= time_field_tag(:time, time = Time.now.strftime("%I:%M")) %>
-    <% end %>
-  </p>
-  <div id="footer">
-    <p> _ </p>
-  </div>
+    <div id='nav'>
+      <div id ='form'>
+        <%= form_tag({ :action => "update" }, :method => "get") do %>
+          <%= select_tag(:pass, options_for_select(['Blue', 'Purple', 'Green', 'Yellow', 'Orange', 'Silver', 'Tan', 'Evening', 'East Campus Resident'])) %>
+          <div id="hidden"><%= select_tag(:number, grouped_options_for_select(grouped_options)) %></div>
+          <%= time_field_tag(:time, time = Time.now.strftime("%I:%M")) %>
+        <% end %>
+      </div>
+    </div>
 </div>
