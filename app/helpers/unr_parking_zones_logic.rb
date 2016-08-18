@@ -32,6 +32,37 @@ module UNRParkingZonesLogic
       @zones.push(unr_outline)
     end
 
+    def parking_pass_info
+      case @pass
+      when 'Blue'
+        @info = blue_zone_permit
+      when 'Silver'
+        @info = silver_zone_permit
+      when 'Tan'
+        @info = tan_zone_permit
+      when 'Purple'
+        @info = purple_zone_permit
+      when 'Green'
+        @info = green_zone_permit
+      when 'Orange'
+        @info = orange_zone_permit
+      when 'Yellow'
+        if @number == '1'
+          @info = yellow_1_zone_permit
+        elsif @number == '2'
+          @info = yellow_2_zone_permit
+        elsif @number == '3'
+          @info = yellow_3_zone_permit
+        end
+      when 'Evening'
+        @info = evening_permit
+      when 'East Campus Resident'
+        @info = east_campus_resident_permit
+      else
+        @info = nil
+      end
+    end
+
     private
 
     def find_evening_zones

@@ -12,7 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require rails_bootstrap_forms
  */
+
+
 html {
   height: 100%;
 }
@@ -20,6 +23,14 @@ body {
   height: 100%;
   margin: 0px;
   padding: 0px;
+  font-family: 'Open Sans Condensed:700', serif;
+}
+h1 {
+  color: rgb(4, 60, 111);
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+p, label {
+  color: #ffffff;
 }
 #content {
   width: 100%;
@@ -32,13 +43,39 @@ body {
 #nav {
   z-index: 100;
   position: absolute;
-  left: 100px;
+  left: 50px;
   top: 50px;
-  border: 1px #ffffff Solid;
+  height: 400px;
+  width: 300px;
   padding: 50px;
+  padding-top: 25px;
   border-radius: 5%;
-  background-color: rgba(4, 60, 111, 0.8);
+  background-color: rgba(40, 40, 40, 0.95);
+  -webkit-box-shadow: 31px 31px 68px -12px rgba(0,0,0,0.69);
+  -moz-box-shadow: 31px 31px 68px -12px rgba(0,0,0,0.69);
+  box-shadow: 31px 31px 68px -12px rgba(0,0,0,0.69);
+}
+#info {
+  border: 2px;
+  background-color: rgba(173, 173, 173, 0.15);
+  padding: 5px;
+  border-radius: 5%;
+  position: absolute;
+  top: 225px;
+  left: 10px;
+  width: 370px;
 }
 #form {
   opacity: 1.0;
+}
+input[type=text], select {
+    border-radius: 4px;
+    color: #ffffff;
+    -webkit-box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
+    box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
+}
+
+input[type=checkbox] {
+  border-radius: 5px;
 }

@@ -15,7 +15,12 @@
 //= require turbolinks
 //= require_tree .
 //= require passes.js.coffee
+//= require fontawesome-markers.min.js
 
+// $('#time').timepicker()
+// $("#show_dispensers").bootstrapSwitch();
+
+$('#description').parent().hide()
 function initMap() {
   window.map = new google.maps.Map(document.getElementById('map'), {
     center: {lat:39.5439642, lng: -119.8171444},
@@ -32,20 +37,28 @@ function initMap() {
 function addZones() {
   var zones = $('#map_data').data('zones');
   window.overlays = []
+  var first = zones[0][0]
   for (var i = 0; i < zones.length; i++) {
+    var metaData = zones[i].shift();
     var polygon = new google.maps.Polygon({
       paths: zones[i],
-      strokeColor: '#ffef16',
-      strokeOpacity: 1,
-      strokeWeight: 2,
-      fillColor: '#001a8a',
-      fillOpacity: 0.01
+      strokeColor: metaData["stroke_color"],
+      strokeOpacity: metaData["stroke_opacity"],
+      strokeWeight: metaData["stroke_weight"],
+      fillColor: metaData["fill_color"],
+      fillOpacity: metaData["fill_opacity"]
     });
+    setFormColors(first);
     polygon.setMap(map);
-    overlays.push(polygon)
+    overlays.push(polygon);
   }
 };
 
+function setFormColors(metaData){
+  var fill = metaData["fill_color"].toString();
+  $('#pass').css({"background-color": fill});
+  $('#number').css({"background-color": fill});
+};
 
 function removeZones(){
   while(overlays[0]){
@@ -55,15 +68,62 @@ function removeZones(){
 
 $('#pass').change(function() {
   loadPass();
+  loadInfo();
 });
 
 $('#number').change(function() {
   loadPass();
+  loadInfo();
 });
 
 $('#time').change(function() {
   loadPass();
+  loadInfo();
 });
+
+$('#show_dispensers').change(function() {
+  if(this.checked){
+    addDispensers();
+  }
+  else{
+    clearMarkers();
+  }
+});
+
+function addDispensers(){
+  window.dispensers = []
+  var dispensers = $('#map_data').data('dispensers')
+  for (var i = 0; i < dispensers.length; i++) {
+    var marker = new google.maps.Marker({
+      position: dispensers[i],
+      map: map,
+      icon: {
+        path: fontawesome.markers.DOT_CIRCLE_O,
+        scale: 0.2,
+        strokeWeight: 0.2,
+        strokeColor: 'black',
+        strokeOpacity: 1,
+        fillColor: '#ddf000',
+        fillOpacity: 0.7
+    }
+    });
+    window.dispensers.push(marker);
+  };
+};
+
+function clearMarkers() {
+  while(dispensers[0]){
+    dispensers.pop().setMap(null);
+  }
+};
+
+function loadInfo(){
+  description = $('#description').html()
+  if(description === 'null')
+    $('#description').parent().hide()
+  else
+    $('#description').parent().show()
+};
 
 function loadPass(){
   var params = {
@@ -74,6 +134,9 @@ function loadPass(){
   }
   $.get( "/application/update", params, function(data) {
     $('#map_data').data('zones', data['zones'])
+    $('#map_data').data('info', data['info'])
+    $('#info').text($('#map_data').data('info'))
+    $('#info').css('color', '#ffffff')
     removeZones();
     addZones();
   });
