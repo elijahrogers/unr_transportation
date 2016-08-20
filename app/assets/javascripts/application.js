@@ -13,12 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require jquery.timepicker.min.js
 //= require passes.js.coffee
 //= require fontawesome-markers.min.js
+//= require_tree .
 
-// $('#time').timepicker()
-// $("#show_dispensers").bootstrapSwitch();
+$('#time').timepicker({ 'scrollDefault': 'now', 'timeFormat': 'h:i A' });
 
 $('#description').parent().hide()
 function initMap() {
@@ -58,6 +58,7 @@ function setFormColors(metaData){
   var fill = metaData["fill_color"].toString();
   $('#pass').css({"background-color": fill});
   $('#number').css({"background-color": fill});
+  $('#time').css({"background-color": fill});
 };
 
 function removeZones(){
@@ -86,9 +87,39 @@ $('#show_dispensers').change(function() {
     addDispensers();
   }
   else{
-    clearMarkers();
+    clearMarkers(window.dispensers);
   }
 });
+
+$('#show_evcs').change(function() {
+  if(this.checked){
+    addEVCS();
+  }
+  else{
+    clearMarkers(window.evcs);
+  }
+});
+
+function addEVCS(){
+  window.evcs = []
+  var chargingStations = $('#map_data').data('evcs')
+  for (var i = 0; i < chargingStations.length; i++) {
+    var marker = new google.maps.Marker({
+      position: chargingStations[i],
+      map: map,
+      icon: {
+        path: fontawesome.markers.PLUG,
+        scale: 0.2,
+        strokeWeight: 0.2,
+        strokeColor: 'black',
+        strokeOpacity: 1,
+        fillColor: '#4df000',
+        fillOpacity: 0.7
+    }
+    });
+    window.evcs.push(marker);
+  };
+};
 
 function addDispensers(){
   window.dispensers = []
@@ -98,7 +129,7 @@ function addDispensers(){
       position: dispensers[i],
       map: map,
       icon: {
-        path: fontawesome.markers.DOT_CIRCLE_O,
+        path: fontawesome.markers.MAP_PIN,
         scale: 0.2,
         strokeWeight: 0.2,
         strokeColor: 'black',
@@ -111,9 +142,9 @@ function addDispensers(){
   };
 };
 
-function clearMarkers() {
-  while(dispensers[0]){
-    dispensers.pop().setMap(null);
+function clearMarkers(array) {
+  while(array[0]){
+    array.pop().setMap(null);
   }
 };
 

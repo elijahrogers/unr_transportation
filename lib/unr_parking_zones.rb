@@ -649,4 +649,10 @@ module UNRParkingZones
       {lat: 39.543276, lng: -119.816637}, {lat: 39.537321, lng: -119.814329}
     ]
   end
+
+  def electric_vehicle_charging_stations
+    [
+      {lat: 39.543239, lng: -119.816760}, {lat: 39.546076, lng: -119.818338}
+    ]
+  end
 end

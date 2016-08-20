@@ -10,9 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery.timepicker.css
  *= require_tree .
  *= require_self
- *= require rails_bootstrap_forms
  */
 
 
@@ -29,8 +29,13 @@ h1 {
   color: rgb(4, 60, 111);
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
-p, label {
+p {
   color: #ffffff;
+  position: center;
+}
+label {
+  color: #ffffff;
+  font-size: 14px;
 }
 #content {
   width: 100%;
@@ -61,7 +66,7 @@ p, label {
   padding: 5px;
   border-radius: 5%;
   position: absolute;
-  top: 225px;
+  top: 250px;
   left: 10px;
   width: 370px;
 }
@@ -71,6 +76,8 @@ p, label {
 input[type=text], select {
     border-radius: 4px;
     color: #ffffff;
+    width: 45%;
+    background-color: rgb(32, 32, 32);
     -webkit-box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
     -moz-box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
     box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
