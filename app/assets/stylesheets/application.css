@@ -50,7 +50,7 @@ label {
   position: absolute;
   left: 50px;
   top: 50px;
-  height: 400px;
+  height: 225px;
   width: 300px;
   padding: 50px;
   padding-top: 25px;
@@ -72,6 +72,18 @@ label {
 }
 #form {
   opacity: 1.0;
+}
+
+#name {
+  color: #ffffff;
+  display: inline-block;
+}
+#title {
+  text-align: center;
+}
+#price {
+  text-align: center;
+  color: #23d400;
 }
 input[type=text], select {
     border-radius: 4px;

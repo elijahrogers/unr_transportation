@@ -109,7 +109,7 @@ function addEVCS(){
       map: map,
       icon: {
         path: fontawesome.markers.PLUG,
-        scale: 0.2,
+        scale: 0.3,
         strokeWeight: 0.2,
         strokeColor: 'black',
         strokeOpacity: 1,
@@ -130,7 +130,7 @@ function addDispensers(){
       map: map,
       icon: {
         path: fontawesome.markers.MAP_PIN,
-        scale: 0.2,
+        scale: 0.3,
         strokeWeight: 0.2,
         strokeColor: 'black',
         strokeOpacity: 1,
@@ -150,10 +150,14 @@ function clearMarkers(array) {
 
 function loadInfo(){
   description = $('#description').html()
-  if(description === 'null')
+  if(description === 'null') {
+    $('#nav').css({'height': '225px'})
     $('#description').parent().hide()
-  else
+  }
+  else {
+    $('#nav').css({'height': '425px' })
     $('#description').parent().show()
+  }
 };
 
 function loadPass(){
@@ -166,8 +170,10 @@ function loadPass(){
   $.get( "/application/update", params, function(data) {
     $('#map_data').data('zones', data['zones'])
     $('#map_data').data('info', data['info'])
-    $('#info').text($('#map_data').data('info'))
-    $('#info').css('color', '#ffffff')
+    var info = $('#map_data').data('info')
+    $('#description').text(info['description'])
+    $('#price').text(info['price'])
+    $('#name').text(info['name'] + ' - ')
     removeZones();
     addZones();
   });
