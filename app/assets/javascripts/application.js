@@ -229,7 +229,7 @@ function loadPass(){
     $('#map_data').data('zones', data['zones'])
     $('#map_data').data('info', data['info'])
     var info = $('#map_data').data('info')
-    $('#description').text(info['description'])
+    $('#description').html(info['description'])
     $('#price').text(info['price'])
     $('#name').text(info['name'] + ' - ')
     removeZones();

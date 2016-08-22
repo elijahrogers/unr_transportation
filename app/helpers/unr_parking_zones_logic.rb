@@ -26,6 +26,8 @@ module UNRParkingZonesLogic
         find_east_campus_zones
       elsif @pass == 'Evening'
         find_evening_zones
+      elsif @pass == 'Visitor'
+        @zones = visitor_zones
       else
         @zones = []
       end
@@ -58,6 +60,8 @@ module UNRParkingZonesLogic
         @info = evening_permit
       when 'East Campus Resident'
         @info = east_campus_resident_permit
+      when 'Visitor'
+        @info = visitor_parking
       else
         @info = nil
       end

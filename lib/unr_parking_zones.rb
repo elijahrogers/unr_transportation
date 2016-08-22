@@ -786,4 +786,26 @@ module UNRParkingZones
       ]
     ]
   end
+
+  def visitor_zones
+    [
+      [
+        {fill_color: '#ff0000', fill_opacity: 0.5, stroke_color: '#ff0000',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.54697, lng: -119.81888 }, {lat: 39.54655, lng: -119.81958 },
+        {lat: 39.54569, lng: -119.81865 }, {lat: 39.54608, lng: -119.81793 },
+      ],
+      [
+        {fill_color: '#ff00d6', fill_opacity: 0.5, stroke_color: '#ff00d6',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.5434, lng: -119.81663 }, {lat: 39.5434, lng: -119.81667 },
+        {lat: 39.54344, lng: -119.81682 }, {lat: 39.54331, lng: -119.81686 },
+        {lat: 39.54314, lng: -119.81721 }, {lat: 39.54285, lng: -119.81702 },
+        {lat: 39.54258, lng: -119.81689 }, {lat: 39.54237, lng: -119.81682 },
+        {lat: 39.5425, lng: -119.81615 }, {lat: 39.54256, lng: -119.81617 },
+        {lat: 39.54266, lng: -119.81609 }, {lat: 39.54273, lng: -119.81623 },
+        {lat: 39.54307, lng: -119.81641 },
+      ]
+    ]
+  end
 end

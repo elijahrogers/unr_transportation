@@ -64,4 +64,10 @@ module ParkingPassInfo
       name: 'Purple Zone Permit' , price: 'Price Unavailable', description: 'We have no information for this pass'
     }
   end
+
+  def visitor_parking
+    {
+      name: 'Visitor Parking' , price: 'Price Variable', description: "Parking for visitors to UNR is available on the top level of the <span style=\"color:#FF0000\">West Stadium Parking Complex</span> for $5.00 per day. <br /><br />Visitor parking is also available on first and second levels of the <span style=\"color:#ff00d6\">Brian J. Whalen Parking Complex</span> at a rate of $1.50/hour for a maximum of 4 hours."
+    }
+  end
 end
