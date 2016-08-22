@@ -11,10 +11,10 @@
  * file per style scope.
  *
  *= require jquery.timepicker.css
+ *= require switches.css
  *= require_tree .
  *= require_self
  */
-
 
 html {
   height: 100%;
@@ -26,16 +26,31 @@ body {
   font-family: 'Open Sans Condensed:700', serif;
 }
 h1 {
-  color: rgb(4, 60, 111);
+  color: #043c6f;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  margin-bottom: 5px;
 }
 p {
   color: #ffffff;
-  position: center;
-}
-label {
-  color: #ffffff;
   font-size: 14px;
+  margin: 3px 0;
+}
+input[type=text], select {
+    border-radius: 4px;
+    color: #ffffff;
+    width: 45%;
+    background-color: rgb(32, 32, 32);
+}
+.label {
+  color: #ffffff;
+  font-size: 16px;
+  display: inline-block;
+  text-align: left;
+  margin-left: 5px;
+  vertical-align: top;
+}
+.chkbox {
+  float: right;
 }
 #content {
   width: 100%;
@@ -50,7 +65,7 @@ label {
   position: absolute;
   left: 50px;
   top: 50px;
-  height: 225px;
+  height: 250px;
   width: 300px;
   padding: 50px;
   padding-top: 25px;
@@ -66,14 +81,13 @@ label {
   padding: 5px;
   border-radius: 5%;
   position: absolute;
-  top: 250px;
+  top: 300px;
   left: 10px;
   width: 370px;
 }
-#form {
-  opacity: 1.0;
+#instructions {
+  text-align: center;
 }
-
 #name {
   color: #ffffff;
   display: inline-block;
@@ -85,16 +99,6 @@ label {
   text-align: center;
   color: #23d400;
 }
-input[type=text], select {
-    border-radius: 4px;
-    color: #ffffff;
-    width: 45%;
-    background-color: rgb(32, 32, 32);
-    -webkit-box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
-    box-shadow: inset 10px 10px 31px -5px rgba(0,0,0,0.75);
-}
-
-input[type=checkbox] {
-  border-radius: 5px;
+#description {
+  font-size: 16px;
 }

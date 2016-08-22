@@ -1,21 +1,52 @@
-<%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones, info: @info, dispensers: permit_dispensers, evcs: electric_vehicle_charging_stations}) %>
+<%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones, info: @info, dispensers: permit_dispensers, evcs: electric_vehicle_charging_stations, stops: pack_transit_stops, routes: pack_transit_routes}) %>
 <% grouped_options = {"Blue"=>[], "Purple"=>[], "Green"=>[], "Yellow"=>["1", "2", "3"], "Orange"=>[], "Silver"=>["1", "2", "3", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"], "Tan"=>[], "Evening"=>[], "East Campus Resident"=>[]} %>
 <div id="content">
     <div id="map"></div>
     <div id='nav'>
       <h1>UNR Transportation</h1>
-      <p>Please select a parking pass and time to view available parking</p>
+      <p id='instructions'>Please select a parking pass and time to view available parking</p>
+      <br  />
       <div id ='form'>
         <%= form_tag({ :action => "update" }, :method => "get") do %>
           <%= select_tag(:pass, options_for_select(['Blue', 'Purple', 'Green', 'Yellow', 'Orange', 'Silver', 'Tan', 'Evening', 'East Campus Resident'])) %>
           <span id="hidden"><%= select_tag(:number, grouped_options_for_select(grouped_options)) %></span>
           <%= text_field_tag(:time, time = Time.now.strftime("%I:%M")) %>
           <br /><br />
-          <%= label_tag(:show_dispensers, 'Show Permit Dispensers') %>
-          <%= check_box_tag(:show_dispensers, 'true')%>
-          <br />
-          <%= label_tag(:show_evcs, 'Show Electric Vehicle Charging Stations') %>
-          <%= check_box_tag(:show_evcs, 'true')%>
+          <div class="onoffswitch">
+            <%= check_box_tag(:show_dispensers, 'true', false, class: "onoffswitch-checkbox") %>
+            <%= label_tag :show_dispensers, class: 'onoffswitch-label' do %>
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            <% end %>
+          </div>
+          <p class='label'> Permit Dispensers </p>
+          <br  />
+          <div class="onoffswitch">
+            <%= check_box_tag(:show_evcs, 'true', false, class: "onoffswitch-checkbox") %>
+            <%= label_tag :show_evcs, class: 'onoffswitch-label' do %>
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            <% end %>
+          </div>
+          <p class='label'>Electric Vehicle Charging Stations</p>
+          <br  />
+          <div class="onoffswitch">
+            <%= check_box_tag(:show_pack_transit_stops, 'true', false, class: "onoffswitch-checkbox") %>
+            <%= label_tag :show_pack_transit_stops, class: 'onoffswitch-label' do %>
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            <% end %>
+          </div>
+          <p class='label'>PACKTransit stops</p>
+          <br  />
+          <div class="onoffswitch">
+            <%= check_box_tag(:show_pack_transit_routes, 'true', false, class: "onoffswitch-checkbox") %>
+            <%= label_tag :show_pack_transit_routes, class: 'onoffswitch-label' do %>
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            <% end %>
+          </div>
+          <p class='label'>PACKTransit routes</p>
         <% end %>
       </div>
       <div id='info'>

@@ -21,6 +21,7 @@
 $('#time').timepicker({ 'scrollDefault': 'now', 'timeFormat': 'h:i A' });
 
 $('#description').parent().hide()
+
 function initMap() {
   window.map = new google.maps.Map(document.getElementById('map'), {
     center: {lat:39.5439642, lng: -119.8171444},
@@ -100,6 +101,24 @@ $('#show_evcs').change(function() {
   }
 });
 
+$('#show_pack_transit_stops').change(function() {
+  if(this.checked){
+    addStops();
+  }
+  else{
+    clearMarkers(window.stops);
+  }
+});
+
+$('#show_pack_transit_routes').change(function() {
+  if(this.checked){
+    addRoutes();
+  }
+  else{
+    clearMarkers(window.routes);
+  }
+});
+
 function addEVCS(){
   window.evcs = []
   var chargingStations = $('#map_data').data('evcs')
@@ -142,6 +161,45 @@ function addDispensers(){
   };
 };
 
+function addStops(){
+  window.stops = []
+  var packTransitStops = $('#map_data').data('stops');
+  for (var i = 0; i < packTransitStops.length; i++) {
+    var marker = new google.maps.Marker({
+      title: packTransitStops[i][0],
+      position: packTransitStops[i][1],
+      map: map,
+      icon: {
+        path: fontawesome.markers.BUS,
+        scale: 0.3,
+        strokeWeight: 0.2,
+        strokeColor: 'black',
+        strokeOpacity: 1,
+        fillColor: '#001c53',
+        fillOpacity: 0.7
+    }
+    });
+    window.stops.push(marker);
+  };
+};
+
+function addRoutes(){
+  var packTransitRoutes = $('#map_data').data('routes');
+  window.routes = []
+  for (var i = 0; i < packTransitRoutes.length; i++) {
+    // var color = packTransitRoutes[i].shift();
+    var route = new google.maps.Polyline({
+      path: packTransitRoutes[i],
+      geodesic: true,
+      strokeColor: '#d60600',
+      strokeOpacity: 1.0,
+      strokeWeight: 3
+    });
+    route.setMap(map);
+    window.routes.push(route)
+  }
+};
+
 function clearMarkers(array) {
   while(array[0]){
     array.pop().setMap(null);
@@ -151,11 +209,11 @@ function clearMarkers(array) {
 function loadInfo(){
   description = $('#description').html()
   if(description === 'null') {
-    $('#nav').css({'height': '225px'})
+    $('#nav').css({'height': '250px'})
     $('#description').parent().hide()
   }
   else {
-    $('#nav').css({'height': '425px' })
+    $('#nav').css({'height': '450px'})
     $('#description').parent().show()
   }
 };
