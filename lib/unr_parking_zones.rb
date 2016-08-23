@@ -4,12 +4,10 @@ module UNRParkingZones
     [
       {fill_color: '#0039b9', fill_opacity: 0.5, stroke_color: '#0039b9',
         stroke_opacity: 0.5, stroke_weight: 2, info_content: ''},
-      {lat: 39.55111, lng: -119.81866}, {lat: 39.55072, lng: -119.82133},
-      {lat: 39.55015, lng: -119.82131}, {lat: 39.55018, lng: -119.81987},
-      {lat: 39.55019, lng: -119.81917}, {lat: 39.5502, lng: -119.81901},
-      {lat: 39.55032, lng: -119.81883}, {lat: 39.55033, lng: -119.81809},
-      {lat: 39.55089, lng: -119.81818}, {lat: 39.55111, lng: -119.8184},
-      {lat: 39.55113, lng: -119.81847},
+      {lat: 39.5507, lng: -119.82124 }, {lat: 39.55082, lng: -119.82053 },
+      {lat: 39.55016, lng: -119.82051 }, {lat: 39.55016, lng: -119.82131 },
+      {lat: 39.55018, lng: -119.82138 }, {lat: 39.55063, lng: -119.82139 },
+      {lat: 39.55065, lng: -119.82127 },
     ]
   end
 
@@ -40,6 +38,39 @@ module UNRParkingZones
       {lat: 39.54863, lng: -119.81156 }, {lat: 39.54882, lng: -119.81156 },
       {lat: 39.54878, lng: -119.81185 }, {lat: 39.54898, lng: -119.8121 },
       {lat: 39.54917, lng: -119.81218 },
+    ]
+  end
+
+  def blue4
+    [
+      {fill_color: '#0039b9', fill_opacity: 0.5, stroke_color: '#0039b9',
+        stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+      {lat: 39.5408, lng: -119.80777 }, {lat: 39.5408, lng: -119.80744 },
+      {lat: 39.54026, lng: -119.80743 }, {lat: 39.54026, lng: -119.80755 },
+      {lat: 39.54026, lng: -119.80774 }, {lat: 39.54049, lng: -119.80775 },
+      {lat: 39.5407, lng: -119.80777 },
+    ]
+  end
+
+  def blue5
+    [
+      {fill_color: '#0039b9', fill_opacity: 0.5, stroke_color: '#0039b9',
+        stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+      {lat: 39.53881, lng: -119.80771 }, {lat: 39.53881, lng: -119.80751 },
+      {lat: 39.53781, lng: -119.80745 }, {lat: 39.5378, lng: -119.8074 },
+      {lat: 39.53743, lng: -119.80739 }, {lat: 39.53742, lng: -119.80755 },
+      {lat: 39.5375, lng: -119.80755 }, {lat: 39.53757, lng: -119.80761 },
+      {lat: 39.53847, lng: -119.80765 }, {lat: 39.53857, lng: -119.80761 },
+      {lat: 39.53859, lng: -119.8077 },
+    ]
+  end
+
+  def blue6
+    [
+      {fill_color: '#0039b9', fill_opacity: 0.5, stroke_color: '#0039b9',
+        stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+      {lat: 39.53831, lng: -119.80668 }, {lat: 39.53831, lng: -119.80676 },
+      {lat: 39.53877, lng: -119.80677 }, {lat: 39.53877, lng: -119.8067 },
     ]
   end
 
@@ -112,8 +143,9 @@ module UNRParkingZones
     [
       {fill_color: '#0d7400', fill_opacity: 0.5, stroke_color: '#0d7400',
         stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
-      {lat: 39.54772, lng: -119.81586 }, {lat: 39.5474, lng: -119.81639 },
-      {lat: 39.54664, lng: -119.81559 }, {lat: 39.54696, lng: -119.81508 },
+      {lat: 39.54749, lng: -119.81275 }, {lat: 39.54746, lng: -119.81323 },
+      {lat: 39.54736, lng: -119.81344 }, {lat: 39.54692, lng: -119.81275 },
+      {lat: 39.54731, lng: -119.81243 },
     ]
   end
 
@@ -121,9 +153,33 @@ module UNRParkingZones
     [
       {fill_color: '#0d7400', fill_opacity: 0.5, stroke_color: '#0d7400',
         stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
-      {lat: 39.54749, lng: -119.81275 }, {lat: 39.54746, lng: -119.81323 },
-      {lat: 39.54736, lng: -119.81344 }, {lat: 39.54692, lng: -119.81275 },
-      {lat: 39.54731, lng: -119.81243 },
+      {lat: 39.55108, lng: -119.81865 }, {lat: 39.55082, lng: -119.82053 },
+      {lat: 39.55016, lng: -119.82051 }, {lat: 39.55019, lng: -119.81909 },
+      {lat: 39.55027, lng: -119.81901 }, {lat: 39.55032, lng: -119.8189 },
+      {lat: 39.55033, lng: -119.8186 },
+    ]
+  end
+
+  def tan1
+    [
+      {fill_color: '#b5ae6a', fill_opacity: 0.7, stroke_color: '#b5ae6a',
+        stroke_opacity: 0.7, stroke_weight: 2, info_content: '' },
+      {lat: 39.54772, lng: -119.81586 }, {lat: 39.5474, lng: -119.81639 },
+      {lat: 39.54664, lng: -119.81559 }, {lat: 39.54696, lng: -119.81508 },
+    ]
+  end
+
+  def tan2
+    [
+      {fill_color: '#b5ae6a', fill_opacity: 0.7, stroke_color: '#b5ae6a',
+        stroke_opacity: 0.7, stroke_weight: 2, info_content: '' },
+      {lat: 39.55106, lng: -119.81642 }, {lat: 39.55101, lng: -119.81754 },
+      {lat: 39.55096, lng: -119.81768 }, {lat: 39.55089, lng: -119.81775 },
+      {lat: 39.55081, lng: -119.8178 }, {lat: 39.55071, lng: -119.81783 },
+      {lat: 39.55059, lng: -119.81777 }, {lat: 39.55051, lng: -119.81771 },
+      {lat: 39.55036, lng: -119.81754 }, {lat: 39.55032, lng: -119.81742 },
+      {lat: 39.55043, lng: -119.81721 }, {lat: 39.55039, lng: -119.81492 },
+      {lat: 39.5508, lng: -119.81559 }, {lat: 39.55075, lng: -119.81566 },
     ]
   end
 
@@ -805,6 +861,102 @@ module UNRParkingZones
         {lat: 39.5425, lng: -119.81615 }, {lat: 39.54256, lng: -119.81617 },
         {lat: 39.54266, lng: -119.81609 }, {lat: 39.54273, lng: -119.81623 },
         {lat: 39.54307, lng: -119.81641 },
+      ]
+    ]
+  end
+
+  def metered_zones
+    [
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.54931, lng: -119.81715 }, {lat: 39.54931, lng: -119.81708 },
+        {lat: 39.54915, lng: -119.81708 }, {lat: 39.54915, lng: -119.81716 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.54657, lng: -119.81566 }, {lat: 39.5466, lng: -119.8156 },
+        {lat: 39.54633, lng: -119.81526 }, {lat: 39.5463, lng: -119.81531 },
+        {lat: 39.54657, lng: -119.81569 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.54625, lng: -119.81517 }, {lat: 39.54601, lng: -119.81489 },
+        {lat: 39.5457, lng: -119.81435 }, {lat: 39.54565, lng: -119.8144 },
+        {lat: 39.54597, lng: -119.81493 }, {lat: 39.54622, lng: -119.81523 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.54615, lng: -119.81526 }, {lat: 39.54592, lng: -119.81499 },
+        {lat: 39.5457, lng: -119.81463 }, {lat: 39.54566, lng: -119.81467 },
+        {lat: 39.54589, lng: -119.81506 }, {lat: 39.54612, lng: -119.81532 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.54376, lng: -119.81441 }, {lat: 39.54378, lng: -119.81435 },
+        {lat: 39.54378, lng: -119.81426 }, {lat: 39.54376, lng: -119.81425 },
+        {lat: 39.5438, lng: -119.81412 }, {lat: 39.54379, lng: -119.81402 },
+        {lat: 39.54376, lng: -119.81401 }, {lat: 39.54379, lng: -119.81395 },
+        {lat: 39.54362, lng: -119.81386 }, {lat: 39.5436, lng: -119.81392 },
+        {lat: 39.54354, lng: -119.814 }, {lat: 39.54351, lng: -119.81411 },
+        {lat: 39.54351, lng: -119.8142 }, {lat: 39.54349, lng: -119.81426 },
+        {lat: 39.54354, lng: -119.81428 }, {lat: 39.54351, lng: -119.81435 },
+        {lat: 39.54377, lng: -119.81448 }, {lat: 39.54378, lng: -119.81442 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.5419, lng: -119.81688 }, {lat: 39.5419, lng: -119.81696 },
+        {lat: 39.54181, lng: -119.81696 }, {lat: 39.54181, lng: -119.81688 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.54146, lng: -119.8128 }, {lat: 39.54146, lng: -119.81284 },
+        {lat: 39.54116, lng: -119.81282 }, {lat: 39.54116, lng: -119.81278 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.538, lng: -119.81743 }, {lat: 39.53793, lng: -119.81741 },
+        {lat: 39.53799, lng: -119.81714 }, {lat: 39.53796, lng: -119.81713 },
+        {lat: 39.538, lng: -119.81695 }, {lat: 39.53808, lng: -119.81698 },
+        {lat: 39.53805, lng: -119.81716 }, {lat: 39.53803, lng: -119.81724 },
+        {lat: 39.53801, lng: -119.81736 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.53731, lng: -119.81644 }, {lat: 39.53722, lng: -119.81642 },
+        {lat: 39.5372, lng: -119.81639 }, {lat: 39.53695, lng: -119.81631 },
+        {lat: 39.53694, lng: -119.81633 }, {lat: 39.53688, lng: -119.81632 },
+        {lat: 39.53697, lng: -119.81621 }, {lat: 39.53719, lng: -119.81628 },
+        {lat: 39.53726, lng: -119.8163 }, {lat: 39.53728, lng: -119.81633 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.5374, lng: -119.81417 }, {lat: 39.53725, lng: -119.8141 },
+        {lat: 39.53728, lng: -119.81402 }, {lat: 39.53735, lng: -119.81406 },
+        {lat: 39.53738, lng: -119.81395 }, {lat: 39.53732, lng: -119.81393 },
+        {lat: 39.53733, lng: -119.81388 }, {lat: 39.53739, lng: -119.81389 },
+        {lat: 39.53741, lng: -119.81378 }, {lat: 39.53735, lng: -119.81374 },
+        {lat: 39.53739, lng: -119.81349 }, {lat: 39.53752, lng: -119.81353 },
+        {lat: 39.53755, lng: -119.81355 }, {lat: 39.53784, lng: -119.81353 },
+        {lat: 39.53785, lng: -119.81357 }, {lat: 39.53753, lng: -119.81359 },
+        {lat: 39.53749, lng: -119.8137 }, {lat: 39.53756, lng: -119.81373 },
+        {lat: 39.53749, lng: -119.81406 }, {lat: 39.53742, lng: -119.81405 },
+      ],
+      [
+        {fill_color: '#f7a075', fill_opacity: 0.5, stroke_color: '#f7a075',
+          stroke_opacity: 0.5, stroke_weight: 2, info_content: '' },
+        {lat: 39.53846, lng: -119.81165 }, {lat: 39.53842, lng: -119.81175 },
+        {lat: 39.53797, lng: -119.81139 }, {lat: 39.53801, lng: -119.81133 },
+        {lat: 39.53819, lng: -119.81148 }, {lat: 39.53821, lng: -119.81145 },
       ]
     ]
   end

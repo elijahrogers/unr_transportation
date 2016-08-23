@@ -70,4 +70,10 @@ module ParkingPassInfo
       name: 'Visitor Parking' , price: 'Price Variable', description: "Parking for visitors to UNR is available on the top level of the <span style=\"color:#FF0000\">West Stadium Parking Complex</span> for $5.00 per day. <br /><br />Visitor parking is also available on first and second levels of the <span style=\"color:#ff00d6\">Brian J. Whalen Parking Complex</span> at a rate of $1.50/hour for a maximum of 4 hours."
     }
   end
+
+  def metered_parking
+    {
+      name: 'Metered Parking' , price: 'Price Variable', description: "Metered Parking is available throughout campus."
+    }
+  end
 end
