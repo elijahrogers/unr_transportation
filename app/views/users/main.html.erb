@@ -3,14 +3,13 @@
 <div id="content">
     <div id="map"></div>
     <div id='nav'>
-      <%= link_to('Log In', controller: 'users', action: 'login') %>
-      <%= link_to('Sign Up', controller: 'users', action: 'new') %>
-      <br />
+      <p>Signed in as: <span id='user-email'><%= @user_email %> <%= link_to('Logout', action: 'logout') %><p>
+      </p></span></p>
       <h1>UNR Transportation</h1>
       <p id='instructions'>Please select a parking pass and time to view available parking</p>
       <br  />
       <div id ='form'>
-        <%= form_tag({ :action => "update" }, :method => "get") do %>
+        <%= form_tag({ :action => "update", :controller => "application" }, :method => "get") do %>
           <%= select_tag(:pass, options_for_select(['Blue', 'Purple', 'Green', 'Yellow', 'Orange', 'Silver', 'Tan', 'Evening', 'East Campus Resident', 'Visitor', 'Metered Parking'])) %>
           <span id="hidden"><%= select_tag(:number, grouped_options_for_select(grouped_options)) %></span>
           <%= text_field_tag(:time, time = Time.now.strftime("%I:%M")) %>

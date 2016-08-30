@@ -3,13 +3,13 @@
 <head>
   <title>UNR Transportation</title>
   <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:300,700" rel="stylesheet">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'users', media: 'all', 'data-turbolinks-track' => true %>
 </head>
 <body>
   <%= yield %>
 </body>
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'users', 'data-turbolinks-track' => true %>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6r93D1mHhWyaRh79vaTficpo47cnayLk&callback=initMap" ></script>
   <%= csrf_meta_tags %>
 </html>

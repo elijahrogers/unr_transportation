@@ -30,7 +30,8 @@ function initMap() {
     mapTypeId: google.maps.MapTypeId.HYBRID,
     minZoom: 14,
     streetViewControl: false,
-    mapTypeControl: false
+    mapTypeControl: false,
+    backgroundColor: '#043c6f'
   });
   addZones();
 }
@@ -209,11 +210,11 @@ function clearMarkers(array) {
 function loadInfo(){
   description = $('#description').html()
   if(description === 'null') {
-    $('#nav').css({'height': '250px'})
+    $('#nav').css({'height': '300px'})
     $('#description').parent().hide()
   }
   else {
-    $('#nav').css({'height': '450px'})
+    $('#nav').css({'height': '500px'})
     $('#description').parent().show()
   }
 };

@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   include UNRParkingZonesLogic
   include ParkingPassInfo
 
+  layout 'application'
+  
   def main
     @pass = ''
     find_available_zones

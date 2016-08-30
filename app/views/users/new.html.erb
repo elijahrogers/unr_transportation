@@ -1,0 +1,25 @@
+<div id="content">
+    <div id="map"></div>
+    <div id='nav'>
+      <h1>UNR Transportation</h1>
+      <p id='instructions'>Sign up for UNR Transportation</p>
+      <br />
+      <div id='signup-form'>
+        <%= form_for @user do |f| %>
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name %>
+          <br />
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+          <br />
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+          <br />
+          <%= f.label :password %>
+          <%= f.password_field :password_digest %>
+          <br /><br />
+          <%= f.submit 'Create Account'%>
+        <% end %>
+      </div>
+    </div>
+</div>
