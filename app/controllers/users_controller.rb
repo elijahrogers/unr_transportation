@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  layout 'users_static'
+  layout 'users_static', except: :main
 
   before_action :confirm_logged_in, only: :main
 
@@ -9,10 +9,18 @@ class UsersController < ApplicationController
   end
 
   def create
+    flash[:notice] = ''
     @user = User.new(user_params)
     if @user.save
+      flash[:notice] = 'Account Created Successfully'
       redirect_to(action: 'main')
     else
+      if @user.errors
+        flash[:notice] = "The following errror(s) were found: "
+        @user.errors.full_messages.each do |message|
+          flash[:notice] << message + '  '
+        end
+      end
       redirect_to(action: 'new')
     end
   end
@@ -45,10 +53,12 @@ class UsersController < ApplicationController
       end
     end
     if authorized_user
+      flash[:notice] = 'Successfully Logged In'
       session[:email] = authorized_user.email
       session[:user_id] = authorized_user.id
       redirect_to(action: 'main')
     else
+      flash[:notice] = 'Inlvaid email or password'
       redirect_to(action: 'login')
     end
   end

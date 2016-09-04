@@ -1,9 +1,17 @@
 <div id="content">
     <div id="map"></div>
     <div id='nav'>
+      <%= link_to('Home', controller: 'application', action: 'main') %>
+      <%= link_to('Sign In', controller: 'users', action: 'login') %>
+      <br  />
       <h1>UNR Transportation</h1>
       <p id='instructions'>Sign up for UNR Transportation</p>
       <br />
+        <% if flash[:notice] %>
+          <div class='notice'>
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
       <div id='signup-form'>
         <%= form_for @user do |f| %>
           <%= f.label :first_name %>

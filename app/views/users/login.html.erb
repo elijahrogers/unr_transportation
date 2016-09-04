@@ -1,8 +1,16 @@
 <div id="content">
     <div id="map"></div>
     <div id='nav'>
+      <%= link_to('Home', controller: 'application', action: 'main') %>
+      <%= link_to('Sign Up', controller: 'users', action: 'new') %>
+      <br />
       <h1>UNR Transportation</h1>
       <p id='instructions'>Log In to UNR Transportation</p>
+      <% if flash[:notice] %>
+        <div class='notice'>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
       <br />
       <div id='login-form'>
         <%= form_tag(action: 'attempt_login') %>

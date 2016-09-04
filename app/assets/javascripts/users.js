@@ -11,21 +11,21 @@ function initMap() {
   });
 }
 
-$('input[type=text],input[type=password]').focus(function(){
-  window.timer = setInterval(changeColor, 500)
-  var i = 0
-  var colors = ['#67e049','#e80000','#00a3ff','#e000de', '#9e3ed7','#ffa800','#dde200']
-  function changeColor(){
-    $('input[type=text],input[type=password]').css({'background-color': colors[i], 'transition': 'background .5s ease-in'});
-    if(i > colors.length){
-      i = 0
-    }
-    else {
-      i++
-    }
-  }
-});
-$('input[type=text],input[type=password]').focusout(function(){
-  clearInterval(timer);
-  $('input[type=text],input[type=password]').css({'background-color': '#202020'})
-});
+// $('input[type=text],input[type=password]').focus(function(){
+//   window.timer = setInterval(changeColor, 500)
+//   var i = 0
+//   var colors = ['#67e049','#e80000','#00a3ff','#e000de', '#9e3ed7','#ffa800','#dde200']
+//   function changeColor(){
+//     $('input[type=text],input[type=password]').css({'background-color': colors[i], 'transition': 'background .5s ease-in'});
+//     if(i > colors.length){
+//       i = 0
+//     }
+//     else {
+//       i++
+//     }
+//   }
+// });
+// $('input[type=text],input[type=password]').focusout(function(){
+//   clearInterval(timer);
+//   $('input[type=text],input[type=password]').css({'background-color': '#202020'})
+// });

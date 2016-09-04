@@ -6,6 +6,11 @@
       <p>Signed in as: <span id='user-email'><%= @user_email %> <%= link_to('Logout', action: 'logout') %><p>
       </p></span></p>
       <h1>UNR Transportation</h1>
+      <% if flash[:notice] %>
+        <div class='notice'>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
       <p id='instructions'>Please select a parking pass and time to view available parking</p>
       <br  />
       <div id ='form'>
