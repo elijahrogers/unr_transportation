@@ -9,7 +9,7 @@
   <%= yield %>
 </body>
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6r93D1mHhWyaRh79vaTficpo47cnayLk&callback=initMap" ></script>
   <%= csrf_meta_tags %>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6r93D1mHhWyaRh79vaTficpo47cnayLk&callback=initMap" ></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>

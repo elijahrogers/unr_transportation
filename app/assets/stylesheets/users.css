@@ -104,6 +104,18 @@ label {
   width: 100%;
   margin: 0 auto;
 }
+#course-form {
+  color: #ffffff;
+}
+td {
+  font-size: 0.7em;
+  color: #FFFFFF;
+}
+th {
+  font-size: 0.75em;
+  color: #42aaff;
+  border-bottom: 1px solid #dddddd;
+}
 a {
   float: right;
   text-decoration: none;

@@ -1,0 +1,36 @@
+<%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones}) %>
+<div id="content">
+    <div id="map"></div>
+    <div id='nav'>
+      <%= link_to('Home', controller: 'users', action: 'main') %>
+      <%= link_to('Sign Out', controller: 'users', action: 'logout') %>
+      <br />
+      <h1>UNR Transportation</h1>
+      <p id='instructions'>Your Courses:</p>
+      <% if flash[:notice] %>
+        <div class='notice'>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <br />
+      <div id='course-list'>
+        <% if !@courses.empty? %>
+          <table>
+            <tr>
+              <th>Course Name</th>
+              <th>Building</th>
+              <th>Building Code</th>
+            </tr>
+          <% @courses.each do |course| %>
+            <tr>
+              <td> <%= course.name %> </td>
+              <td> <%= Building.find(course.building_id).name %> </td>
+              <td> <%= Building.find(course.building_id).abbreviation %> </td>
+            </tr>
+          <% end %>
+          </table>
+        <% end %>
+      </div>
+      <%= link_to 'Add Course', action: 'new' %>
+    </div>
+</div>

@@ -35,7 +35,15 @@ class UsersController < ApplicationController
   end
 
   def main
-    @user_email = User.find(session[:user_id]).email
+    @pass = ''
+    find_available_zones
+    @user = User.find(session[:user_id])
+    @courses = []
+    @user.courses.each do |course|
+      building = Building.find(course.building_id)
+      @courses.push([{name: course.name}, {lat: building.lat.to_f, lng: building.lng.to_f}])
+    end
+    @courses
     render :layout => 'users'
   end
 

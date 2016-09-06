@@ -1,9 +1,9 @@
-<%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones, info: @info, dispensers: permit_dispensers, evcs: electric_vehicle_charging_stations, stops: pack_transit_stops, routes: pack_transit_routes}) %>
+<%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones, info: @info, dispensers: permit_dispensers, evcs: electric_vehicle_charging_stations, stops: pack_transit_stops, routes: pack_transit_routes, courses: @courses}) %>
 <% grouped_options = {"Visitor"=>[],"Metered Parking"=>[],"Blue"=>[], "Purple"=>[], "Green"=>[], "Yellow"=>["1", "2", "3"], "Orange"=>[], "Silver"=>["1", "2", "3", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"], "Tan"=>[], "Evening"=>[], "East Campus Resident"=>[]} %>
 <div id="content">
     <div id="map"></div>
     <div id='nav'>
-      <p>Signed in as: <span id='user-email'><%= @user_email %> <%= link_to('Logout', action: 'logout') %><p>
+      <p>Signed in as: <span id='user-email'><%= @user.email %><%= link_to('Logout', action: 'logout') %><%= link_to 'View Courses', [@user, :courses] %><p>
       </p></span></p>
       <h1>UNR Transportation</h1>
       <% if flash[:notice] %>
@@ -54,6 +54,15 @@
             <% end %>
           </div>
           <p class='label'>PACKTransit routes</p>
+          <br />
+          <div class="onoffswitch">
+            <%= check_box_tag(:show_courses, 'true', false, class: "onoffswitch-checkbox") %>
+            <%= label_tag :show_courses, class: 'onoffswitch-label' do %>
+              <span class="onoffswitch-inner"></span>
+              <span class="onoffswitch-switch"></span>
+            <% end %>
+          </div>
+          <p class='label'>My Courses</p>
         <% end %>
       </div>
       <div id='info'>

@@ -120,6 +120,15 @@ $('#show_pack_transit_routes').change(function() {
   }
 });
 
+$('#show_courses').change(function() {
+  if(this.checked){
+    addCourses();
+  }
+  else{
+    clearMarkers(window.courses);
+  }
+});
+
 function addEVCS(){
   window.evcs = []
   var chargingStations = $('#map_data').data('evcs')
@@ -199,6 +208,28 @@ function addRoutes(){
     route.setMap(map);
     window.routes.push(route)
   }
+};
+
+function addCourses(){
+  window.courses = []
+  var courses = $('#map_data').data('courses');
+  for (var i = 0; i < courses.length; i++) {
+    var marker = new google.maps.Marker({
+      title: courses[i][0]['name'],
+      position: courses[i][1],
+      map: map,
+      icon: {
+        path: fontawesome.markers.BOOK,
+        scale: 0.3,
+        strokeWeight: 0.2,
+        strokeColor: 'black',
+        strokeOpacity: 1,
+        fillColor: '#5cfff5',
+        fillOpacity: 0.9
+    }
+    });
+    window.courses.push(marker);
+  };
 };
 
 function clearMarkers(array) {
