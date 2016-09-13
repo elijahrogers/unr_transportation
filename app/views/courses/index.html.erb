@@ -19,13 +19,14 @@
             <tr>
               <th>Course Name</th>
               <th>Building</th>
-              <th>Building Code</th>
+              <th colspan="2">Actions</th>
             </tr>
           <% @courses.each do |course| %>
             <tr>
-              <td> <%= course.name %> </td>
-              <td> <%= Building.find(course.building_id).name %> </td>
-              <td> <%= Building.find(course.building_id).abbreviation %> </td>
+              <td> <%= truncate course.name, length: 20 %> </td>
+              <td> <%= truncate Building.find(course.building_id).name, length: 25 %> </td>
+              <td> <%= button_to 'Edit', edit_user_course_path(@user, course), method: :get, class: "button_to"  %> </td>
+              <td> <%= button_to 'Delete', user_course_path(@user, course), method: :delete, class: "button_to" %> </td>
             </tr>
           <% end %>
           </table>

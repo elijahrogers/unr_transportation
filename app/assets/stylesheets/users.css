@@ -34,6 +34,13 @@ input[type=submit] {
   background-color: #043c6f;
   border-radius: 4px;
 }
+select {
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: rgb(32, 32, 32);
+  float: left;
+  width: 45%;
+}
 label {
   color: #ffffff;
   font-size: 16px;
@@ -115,6 +122,10 @@ th {
   font-size: 0.75em;
   color: #42aaff;
   border-bottom: 1px solid #dddddd;
+}
+.button_to {
+  font-size: 0.3em;
+  border-radius: 0.05em;
 }
 a {
   float: right;

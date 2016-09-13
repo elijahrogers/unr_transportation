@@ -3,7 +3,7 @@
 <div id="content">
     <div id="map"></div>
     <div id='nav'>
-      <p>Signed in as: <span id='user-email'><%= @user.email %><%= link_to('Logout', action: 'logout') %><%= link_to 'View Courses', [@user, :courses] %><p>
+      <p><span id='user-email'><%= @user.email %><%= link_to('Logout', action: 'logout') %><%= link_to 'View Courses', [@user, :courses] %><p>
       </p></span></p>
       <h1>UNR Transportation</h1>
       <% if flash[:notice] %>

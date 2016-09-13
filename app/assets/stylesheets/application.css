@@ -108,6 +108,10 @@ input[type=text], select {
 #user-email {
   color: '#00fff7';
 }
+.button_to {
+  font-size: 0.3em;
+  border-radius: 0.05em;
+}
 a {
   float: right;
   text-decoration: none;

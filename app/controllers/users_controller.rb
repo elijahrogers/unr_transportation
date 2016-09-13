@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to(action: 'main')
     else
       if @user.errors
-        flash[:notice] = "The following errror(s) were found: "
+        flash[:notice] = ''
         @user.errors.full_messages.each do |message|
           flash[:notice] << message + '  '
         end
