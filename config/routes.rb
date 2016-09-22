@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'application/update' => 'application#update'
-  resources :users, only: [:new, :create, :edit, :delete] do
+  resources :users, only: [:new, :create, :edit, :destroy, :update] do
     resources :courses
   end
   get 'users/main'
