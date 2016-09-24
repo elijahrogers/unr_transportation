@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :destroy, :update] do
     resources :courses
   end
+  resources :account_activations, only: [:edit]
   get 'users/main'
   get 'users/login'
   post 'users/attempt_login'

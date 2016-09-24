@@ -12,8 +12,9 @@ class UsersController < ApplicationController
     flash[:notice] = ''
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = 'Account Created Successfully'
-      redirect_to(action: 'main')
+      @user.send_activation_email
+      flash[:notice] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       if @user.errors
         flash[:notice] = ''
@@ -72,8 +73,12 @@ class UsersController < ApplicationController
   def attempt_login
     if params[:email].present? && params[:password].present?
       found_user = User.where(:email => params[:email]).first
-      if found_user
+      if found_user && found_user.activated
         authorized_user = found_user.authenticate(params[:password])
+      else
+        flash[:notice] = 'Account not activated'
+        redirect_to users_login_path
+        return
       end
     end
     if authorized_user
