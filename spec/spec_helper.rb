@@ -16,7 +16,8 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-
+require 'simplecov'
+SimpleCov.start 'rails'
 require File.expand_path("../../config/environment", __FILE__)
 
 RSpec.configure do |config|

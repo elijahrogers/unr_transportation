@@ -65,6 +65,14 @@ RSpec.describe PasswordResetsController, type: :controller do
       before do
         @user = create(:activated_user)
         @user.create_reset_digest
+        put :update, email: @user.email, user: { password: 'abc', password_confirmation: 'abc' }, id: @user.reset_token
+      end
+      it { should render_template('edit') }
+    end
+    context 'with no password' do
+      before do
+        @user = create(:activated_user)
+        @user.create_reset_digest
         put :update, email: @user.email, user: { password: '', password_confirmation: '' }, id: @user.reset_token
       end
       it { should render_template('edit') }

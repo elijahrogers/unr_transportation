@@ -111,4 +111,16 @@ describe 'UNR Parking Zones Logic' do
     find_available_zones
     expect(@zones).to match_array([unr_outline])
   end
+
+  it 'finds correct visitor parking' do
+    @pass = 'Visitor'
+    find_available_zones
+    expect(@zones).to match_array([*visitor_zones, unr_outline])
+  end
+
+  it 'finds correct metered parking' do
+    @pass = 'Metered Parking'
+    find_available_zones
+    expect(@zones).to match_array([*metered_zones, unr_outline])
+  end
 end

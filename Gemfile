@@ -19,6 +19,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'shoulda'
   gem 'factory_girl_rails'
+  gem 'simplecov', :require => false
 end
 
 group :development do

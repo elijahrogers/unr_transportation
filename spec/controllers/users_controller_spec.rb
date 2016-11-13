@@ -136,7 +136,7 @@ RSpec.describe UsersController, type: :controller do
       user = create(:user)
       request.session[:user_id] = user.id
       request.session[:email] = user.email
-      delete :destroy, id: user.id
+      get :logout, id: user.id
     end
     it 'clears session data' do
       expect(session[:user_id]).to eq(nil)
@@ -181,5 +181,9 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'before action' do
     it { should use_before_filter(:confirm_logged_in) }
+    it do
+      get :main
+      should redirect_to users_login_path
+    end
   end
 end
