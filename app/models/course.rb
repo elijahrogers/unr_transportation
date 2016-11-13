@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
   belongs_to :user
-  has_one :building
+  belongs_to :building
 
   validates :name, presence: true,
                    length: { within: 5...50 }
