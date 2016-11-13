@@ -12,6 +12,9 @@ RSpec.describe ApplicationController, type: :controller do
     it 'sets parameters correctly' do
       post(:update, pass: 'Blue', number: '', time: '09:52')
       expect(assigns['pass']).to eq('Blue')
+      expect(assigns['number']).to be_empty
+      expect(assigns['time']).to eq(952)
+      expect(assigns['info'][:name]).to match(/Blue/)
     end
   end
 end

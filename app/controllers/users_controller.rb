@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Account Successfully Updated'
       redirect_to users_main_path
     else
-      flash[:notice] = 'Account could not be update'
+      flash[:notice] = 'Account could not be updated'
       redirect_to edit_user_path(@user)
     end
   end

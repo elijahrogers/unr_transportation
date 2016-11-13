@@ -17,6 +17,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'pry-rails'
   gem 'rubocop'
+  gem 'shoulda'
+  gem 'factory_girl_rails'
 end
 
 group :development do
