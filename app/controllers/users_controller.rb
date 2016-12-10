@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  layout 'users_static', except: :main
+  layout 'users_static', except: [:main, :edit]
 
   before_action :confirm_logged_in, only: :main
 

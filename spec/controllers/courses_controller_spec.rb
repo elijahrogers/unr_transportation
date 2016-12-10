@@ -62,6 +62,8 @@ RSpec.describe CoursesController, type: :controller do
   describe 'GET #edit' do
     it 'successfully finds course' do
       course = create(:course)
+      session[:user_id] = course.user.id
+      session[:email] = course.user.email
       get :edit, user_id: course.user.id, id: course.id
       expect(assigns[:course]).to eq(course)
     end

@@ -1,27 +1,20 @@
-<div id="content">
-    <div id="map"></div>
-    <div id='nav'>
-      <%= link_to('Home', controller: 'users', action: 'main') %>
-      <%= link_to('Sign Out', controller: 'users', action: 'logout') %>
-      <br />
-      <h1>UNR Transportation</h1>
-      <p id='instructions'>Edit Course:</p>
-      <% if flash[:notice] %>
-        <div class='notice'>
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <br />
-      <div id='course-form'>
-        <%= form_for [@user, @course], url: {action: 'update', id: @course.id} do |f| %>
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-          <br />
-          <%= f.label :building_id %>
-          <%= f.select :building_id, options_from_collection_for_select(Building.all, 'id', 'name') %>
-          <br /><br />
-          <%= f.submit 'Update Course' %>
-        <% end %>
-      </div>
-    </div>
+<%= render 'layouts/nav_menu', links: [{ text: 'Home', path: 'users_main_path(@user)' }, { text: 'Logout', path: 'users_logout_path' }] %>
+<br />
+<p id='instructions'>Edit Course:</p>
+<% if flash[:notice] %>
+  <div class='notice'>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<br />
+<div id='course-form'>
+  <%= form_for [@user, @course], url: {action: 'update', id: @course.id} do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br />
+    <%= f.label :building_id %>
+    <%= f.select :building_id, options_from_collection_for_select(Building.all, 'id', 'name') %>
+    <br /><br />
+    <%= f.submit 'Update Course' %>
+  <% end %>
 </div>

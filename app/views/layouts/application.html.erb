@@ -5,10 +5,31 @@
   <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:300,700" rel="stylesheet">
   <%= csrf_meta_tags %>
   <%= javascript_include_tag 'application' %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'main', media: 'all' %>
 </head>
 <body>
-  <%= yield %>
+  <div id="content">
+      <div id="map"></div>
+      <div id='nav'>
+        <div id='header'>
+          <h1>UNR Transportation</h1>
+          <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                    <%= link_to root_url, class: 'pure-menu-link', id: 'account' do %>
+                      <i class='fa fa-user-circle fa-2x'></i>
+                    <% end %>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item"><%= link_to 'Login', users_login_path, class: 'pure-menu-link' %></li>
+                        <li class="pure-menu-item"><%= link_to 'Sign Up', new_user_path, class: 'pure-menu-link' %></li>
+                    </ul>
+                </li>
+            </ul>
+          </div>
+        </div>
+    <%= yield %>
+    </div>
+  </div>
 </body>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6r93D1mHhWyaRh79vaTficpo47cnayLk&callback=initMap" ></script>
   <%= javascript_include_tag 'map' %>

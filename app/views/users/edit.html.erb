@@ -1,35 +1,28 @@
-<div id="content">
-    <div id="map"></div>
-    <div id='nav'>
-      <%= link_to 'Home', users_main_path %>
-      <%= link_to 'View Courses', user_courses_path(@user) %>
-      <br  />
-      <h1>UNR Transportation</h1>
-      <p id='instructions'>Edit Your Profile:</p>
-      <br />
-        <% if flash[:notice] %>
-          <div class='notice'>
-            <%= flash[:notice] %>
-          </div>
-        <% end %>
-      <div id='edit-form'>
-        <%= form_for @user, url: {action: 'update', id: @user.id} do |f| %>
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name %>
-          <br />
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name %>
-          <br />
-          <%= f.label :email %>
-          <%= f.text_field :email %>
-          <br />
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-          <br /><br />
-          <%= f.submit 'Update Account'%>
-        <% end %>
-        <br /> <br />
-        <%= button_to 'Delete Account', user_path(@user), method: :delete %>
-      </div>
+<%= render 'layouts/nav_menu', links: [{ text: 'Home', path: 'users_main_path(@user)' }, { text: 'Courses', path: 'user_courses_path(@user, @user.courses)' }, { text: 'Logout', path: 'users_logout_path' }] %>
+<br />
+<p id='instructions'>Edit Your Profile:</p>
+<br />
+  <% if flash[:notice] %>
+    <div class='notice'>
+      <%= flash[:notice] %>
     </div>
+  <% end %>
+<div id='edit-form'>
+  <%= form_for @user, url: {action: 'update', id: @user.id} do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <br />
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <br />
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <br />
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br /><br />
+    <%= f.submit 'Update Account'%>
+  <% end %>
+  <br /> <br />
+  <%= button_to 'Delete Account', user_path(@user), method: :delete %>
 </div>

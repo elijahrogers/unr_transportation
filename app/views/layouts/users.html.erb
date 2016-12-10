@@ -5,10 +5,21 @@
   <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:300,700" rel="stylesheet">
   <%= csrf_meta_tags %>
   <%= javascript_include_tag 'application' %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'users', media: 'all' %>
 </head>
 <body>
-  <%= yield %>
+  <div id="content">
+      <div id="map"></div>
+      <div id='nav'>
+        <h1>UNR Transportation</h1>
+        <% if flash[:notice] %>
+          <div class='notice'>
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+  </div>
 </body>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6r93D1mHhWyaRh79vaTficpo47cnayLk&callback=initMap" ></script>
   <%= javascript_include_tag 'map' %>

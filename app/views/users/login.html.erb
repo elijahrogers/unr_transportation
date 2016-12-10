@@ -1,27 +1,19 @@
-<div id="content">
-    <div id="map"></div>
-    <div id='nav'>
-      <%= link_to('Home', controller: 'application', action: 'main') %>
-      <%= link_to('Sign Up', controller: 'users', action: 'new') %>
-      <br />
-      <h1>UNR Transportation</h1>
-      <p id='instructions'>Log In to UNR Transportation</p>
-      <% if flash[:notice] %>
-        <div class='notice'>
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <br />
-      <div id='login-form'>
-        <%= form_tag(action: 'attempt_login') %>
-          <%= label_tag :email %>
-          <%= text_field_tag :email %>
-          <br />
-          <%= label_tag :password %>
-          <%= password_field_tag :password %>
-          <%= link_to "(forgot password)", new_password_reset_path %>
-          <br /><br />
-          <%= submit_tag 'Log In', id: 'submit'%>
-      </div>
-    </div>
+<p id='instructions'>Log In to UNR Transportation</p>
+<% if flash[:notice] %>
+  <div class='notice'>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<br />
+<div id='login-form'>
+  <%= form_tag(action: 'attempt_login') %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+    <br />
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    <br />
+    <%= link_to "(forgot password)", new_password_reset_path %>
+    <br /><br />
+    <%= submit_tag 'Log In', id: 'submit'%>
 </div>

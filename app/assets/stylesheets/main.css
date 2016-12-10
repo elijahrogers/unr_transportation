@@ -19,7 +19,6 @@ h1 {
   color: #043c6f;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   padding-left: 1.75em;
-  padding-right: 1em;
   float:right;
 }
 p {
@@ -28,60 +27,26 @@ p {
   margin: 3px 0;
 }
 input[type=text], select {
-  border-radius: 4px;
-  color: #ffffff;
-  width: 45%;
-  background-color: rgb(32, 32, 32);
-}
-input[type=password], select {
     border-radius: 4px;
     color: #ffffff;
     width: 45%;
     background-color: rgb(32, 32, 32);
-    float: left;
-}
-input[type=submit] {
-  color: #ffffff;
-  background-color: #043c6f;
-  border-radius: 4px;
-  position: relative;
-  margin: auto;
-  display: block;
-}
-select {
-  border-radius: 4px;
-  color: #ffffff;
-  background-color: rgb(32, 32, 32);
-  float: left;
-  width: 45%;
-}
-form {
-  /*width: 75%;*/
-  margin: 0 auto;
-}
-label {
-  color: #ffffff;
-  font-size: 16px;
-  text-align: left;
-  margin-left: 5px;
-  vertical-align: top;
-  float: right;
 }
 .label {
   color: #ffffff;
-  font-size: 16px;
+  font-size: 15px;
+  display: inline-block;
   text-align: left;
   margin-left: 5px;
   vertical-align: top;
+}
+.chkbox {
   float: right;
 }
-.edit_user {
-  width: 75%;
-  margin: 0 auto;  
-}
-#signup-form {
-  width: 75%;
-  margin: 0 auto;
+#form {
+  text-align: left;
+  padding: 2.5em;
+  padding-top: .5em;
 }
 #content {
   width: 100%;
@@ -132,25 +97,9 @@ label {
 #description {
   font-size: 16px;
 }
-#user-email {
-  color: #00fff7;
-}
-#course-form {
-  color: #ffffff;
-}
-#login-form {
-  width: 75%;
-  margin: 0 auto;
-}
-td {
-  font-size: 0.7em;
-  color: #FFFFFF;
-}
-th {
-  font-size: 0.75em;
-  color: #42aaff;
-  border-bottom: 1px solid #dddddd;
-}
+/*#user-email {
+  color: '#00fff7';
+}*/
 .button_to {
   font-size: 0.3em;
   border-radius: 0.05em;
@@ -160,11 +109,7 @@ div .pure-menu pure-menu-horizontal {
   left: 0px;
   top: 0px;
   display: inline-block;
-  /*float: left;*/
-}
-a {
-  text-decoration: none;
-  color: #ec5b5b;
+  float: left;
 }
 #account:hover, #account:active {
   border-top-left-radius: 25%;
@@ -181,9 +126,4 @@ a {
 }
 #header {
   padding-right: 1.75em;
-}
-#form {
-  text-align: left;
-  padding: 2.5em;
-  padding-top: .5em;
 }

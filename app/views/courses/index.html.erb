@@ -1,37 +1,24 @@
 <%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones}) %>
-<div id="content">
-    <div id="map"></div>
-    <div id='nav'>
-      <%= link_to('Home', controller: 'users', action: 'main') %>
-      <%= link_to('Sign Out', controller: 'users', action: 'logout') %>
-      <br />
-      <h1>UNR Transportation</h1>
-      <p id='instructions'>Your Courses:</p>
-      <% if flash[:notice] %>
-        <div class='notice'>
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <br />
-      <div id='course-list'>
-        <% if !@courses.empty? %>
-          <table>
-            <tr>
-              <th>Course Name</th>
-              <th>Building</th>
-              <th colspan="2">Actions</th>
-            </tr>
-          <% @courses.each do |course| %>
-            <tr>
-              <td> <%= truncate course.name, length: 20 %> </td>
-              <td> <%= truncate Building.find(course.building_id).name, length: 25 %> </td>
-              <td> <%= button_to 'Edit', edit_user_course_path(@user, course), method: :get, class: "button_to"  %> </td>
-              <td> <%= button_to 'Delete', user_course_path(@user, course), method: :delete, class: "button_to" %> </td>
-            </tr>
-          <% end %>
-          </table>
-        <% end %>
-      </div>
-      <%= link_to 'Add Course', action: 'new' %>
-    </div>
+<%= render 'layouts/nav_menu', links: [{ text: 'Home', path: 'users_main_path(@user)' }, { text: 'Logout', path: 'users_logout_path' }] %>
+<p id='instructions'>Your Courses:</p>
+<br />
+<div id='course-list'>
+  <% if !@courses.empty? %>
+    <table>
+      <tr>
+        <th>Course Name</th>
+        <th>Building</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    <% @courses.each do |course| %>
+      <tr>
+        <td> <%= truncate course.name, length: 20 %> </td>
+        <td> <%= truncate Building.find(course.building_id).name, length: 25 %> </td>
+        <td> <%= button_to 'Edit', edit_user_course_path(@user, course), method: :get, class: "button_to"  %> </td>
+        <td> <%= button_to 'Delete', user_course_path(@user, course), method: :delete, class: "button_to" %> </td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
 </div>
+<%= link_to 'Add Course', action: 'new' %>
