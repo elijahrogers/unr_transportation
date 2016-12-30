@@ -13,21 +13,15 @@
       <div id='nav'>
         <div id='header'>
           <h1>UNR Transportation</h1>
-          <div class="pure-menu pure-menu-horizontal">
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                    <%= link_to root_url, class: 'pure-menu-link', id: 'account' do %>
-                      <i class='fa fa-user-circle fa-2x'></i>
-                    <% end %>
-                    <ul class="pure-menu-children">
-                        <li class="pure-menu-item"><%= link_to 'Login', users_login_path, class: 'pure-menu-link' %></li>
-                        <li class="pure-menu-item"><%= link_to 'Sign Up', new_user_path, class: 'pure-menu-link' %></li>
-                    </ul>
-                </li>
-            </ul>
-          </div>
+          <%= render 'layouts/nav_menu', links: [{ text: 'Login', path: 'users_login_path' }, { text: 'Sign Up', path: 'new_user_path'}], home: 'root_url' %>
         </div>
-    <%= yield %>
+        <% flash.each do |key, value| %>
+          <%= content_tag :div, class: "flash #{key}" do %>
+            <%= value %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+        <%= yield %>
     </div>
   </div>
 </body>

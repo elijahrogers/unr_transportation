@@ -1,27 +1,20 @@
-<div id="content">
-    <div id="map"></div>
-    <div id='nav'>
-      <%= link_to('Home', controller: 'application', action: 'main') %>
-      <%= link_to('Sign Up', controller: 'users', action: 'new') %>
-      <br />
-      <h1>UNR Transportation</h1>
-      <p id='instructions'>Forgot Password</p>
-      <% if flash[:notice] %>
-        <div class='notice'>
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <br />
-      <div id='forgot-password-form'>
-        <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
-          <%= hidden_field_tag :email, @user.email %>
-          <%= f.label :password, 'Password' %>
-          <%= f.password_field :password %>
-          <%= f.label :password_confirmation, "Confirm Password" %>
-          <%= f.password_field :password_confirmation %>
-          <br /><br /><br /><br />
-          <%= f.submit "Update password" %>
-        <% end %>
-      </div>
-    </div>
+<%= render 'layouts/nav_menu', links: [{ text: 'Login', path: 'users_login_path' }, { text: 'Sign Up', path: 'new_user_path'}], home: 'root_url' %>
+<% flash.each do |key, value| %>
+  <%= content_tag :div, class: "flash #{key}" do %>
+    <%= value %>
+    <i class="fa fa-times" aria-hidden="true"></i>
+  <% end %>
+<% end %>
+<p id='instructions'>Forgot Password</p>
+<br />
+<div id='forgot-password-form'>
+  <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+    <%= hidden_field_tag :email, @user.email %>
+    <%= f.label :password, 'Password' %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation %>
+    <br /><br /><br /><br />
+    <%= f.submit "Update password" %>
+  <% end %>
 </div>

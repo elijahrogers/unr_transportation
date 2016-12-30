@@ -1,14 +1,15 @@
-<%= render 'layouts/nav_menu', links: [{ text: 'Home', path: 'users_main_path(@user)' }, { text: 'Logout', path: 'users_logout_path' }] %>
-<br />
-<p id='instructions'>Edit Course:</p>
-<% if flash[:notice] %>
-  <div class='notice'>
-    <%= flash[:notice] %>
-  </div>
+<%= render 'layouts/nav_menu', links: [{ text: 'Home', path: 'users_main_path(@user)' }, { text: 'Logout', path: 'users_logout_path' }], home: 'edit_user_path(@user)' %>
+<% flash.each do |key, value| %>
+  <%= content_tag :div, class: "flash #{key}" do %>
+    <%= value %>
+    <i class="fa fa-times" aria-hidden="true"></i>
+  <% end %>
 <% end %>
 <br />
+<p id='instructions'>Edit Course:</p>
+<br />
 <div id='course-form'>
-  <%= form_for [@user, @course], url: {action: 'update', id: @course.id} do |f| %>
+  <%= form_for [@user, @course], url: user_course_path(id: @course.id) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <br />

@@ -9,20 +9,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    flash[:notice] = ''
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:notice] = "Please check your email to activate your account."
+      flash[:notice] = "Activation link sent to #{@user.email}"
       redirect_to root_url
     else
       if @user.errors
-        flash[:notice] = ''
+        flash[:danger] = ''
         @user.errors.full_messages.each do |message|
-          flash[:notice] << message + '  '
+          flash[:danger] << message + '. '
         end
       end
-      redirect_to(action: 'new')
+      redirect_to new_user_path
     end
   end
 
@@ -33,10 +32,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(session[:user_id])
     if @user.update_attributes(user_params)
-      flash[:notice] = 'Account Successfully Updated'
+      flash[:success] = 'Account Successfully Updated'
       redirect_to users_main_path
     else
-      flash[:notice] = 'Account could not be updated'
+      flash[:danger] = 'Account could not be updated'
       redirect_to edit_user_path(@user)
     end
   end
@@ -61,13 +60,14 @@ class UsersController < ApplicationController
       @courses.push([{name: course.name}, {lat: building.lat.to_f, lng: building.lng.to_f}])
     end
     @courses
-    render :layout => 'users'
+    render layout: 'users'
   end
 
   def logout
+    flash[:success] = "Bye #{User.where(id: session[:user_id]).first.first_name}"
     session[:email] = nil
     session[:user_id] = nil
-    redirect_to(controller: 'application', action: 'main')
+    redirect_to root_url
   end
 
   def attempt_login
@@ -82,13 +82,13 @@ class UsersController < ApplicationController
       end
     end
     if authorized_user
-      flash[:notice] = 'Successfully Logged In'
+      flash[:success] = "Welcome #{authorized_user.first_name}!"
       session[:email] = authorized_user.email
       session[:user_id] = authorized_user.id
-      redirect_to(action: 'main')
+      redirect_to users_main_path
     else
-      flash[:notice] = 'Inlvaid email or password'
-      redirect_to(action: 'login')
+      flash[:danger] = 'Inlvaid email or password'
+      redirect_to users_login_path
     end
   end
 
@@ -96,7 +96,7 @@ class UsersController < ApplicationController
 
   def confirm_logged_in
     unless session[:email]
-      redirect_to(action: 'login')
+      redirect_to users_login_path
       return false
     end
   end

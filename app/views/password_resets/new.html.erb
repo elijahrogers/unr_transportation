@@ -1,23 +1,16 @@
-<div id="content">
-    <div id="map"></div>
-    <div id='nav'>
-      <%= link_to('Home', controller: 'application', action: 'main') %>
-      <%= link_to('Sign Up', controller: 'users', action: 'new') %>
-      <br />
-      <h1>UNR Transportation</h1>
-      <p id='instructions'>Forgot Password</p>
-      <% if flash[:notice] %>
-        <div class='notice'>
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <br />
-      <div id='forgot-password-form'>
-        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-          <%= f.label :email %>
-          <%= f.email_field :email, class: 'form-control' %>
-          <%= f.submit "Submit", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </div>
+<%= render 'layouts/nav_menu', links: [{ text: 'Login', path: 'users_login_path' }, { text: 'Sign Up', path: 'new_user_path'}], home: 'root_url' %>
+<% flash.each do |key, value| %>
+  <%= content_tag :div, class: "flash #{key}" do %>
+    <%= value %>
+    <i class="fa fa-times" aria-hidden="true"></i>
+  <% end %>
+<% end %>
+<p id='instructions'>Forgot Password</p>
+<br />
+<div id='forgot-password-form'>
+  <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
 </div>

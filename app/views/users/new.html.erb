@@ -1,10 +1,5 @@
 <p id='instructions'>Sign up for UNR Transportation</p>
 <br />
-  <% if flash[:notice] %>
-    <div class='notice'>
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
 <div id='signup-form'>
   <%= form_for @user do |f| %>
     <%= f.label :first_name %>

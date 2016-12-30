@@ -12,11 +12,6 @@
       <div id="map"></div>
       <div id='nav'>
         <h1>UNR Transportation</h1>
-        <% if flash[:notice] %>
-          <div class='notice'>
-            <%= flash[:notice] %>
-          </div>
-        <% end %>
         <%= yield %>
       </div>
   </div>

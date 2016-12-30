@@ -77,7 +77,7 @@ label {
 }
 .edit_user {
   width: 75%;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 #signup-form {
   width: 75%;
@@ -186,4 +186,29 @@ a {
   text-align: left;
   padding: 2.5em;
   padding-top: .5em;
+}
+div .flash {
+  text-align: center;
+  vertical-align: top;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin: 1em;
+  margin-top: 0em;
+  border-radius: 0.5em;
+}
+.notice {
+  background: white;
+}
+.danger {
+  background: rgba(255, 0, 0, 0.4);
+  color: rgba(69, 0, 0, 1);
+}
+.success {
+  background: rgba(20, 255, 0, 0.4);
+  color: rgb(5, 66, 0);
+}
+.flash i {
+  float: right;
 }

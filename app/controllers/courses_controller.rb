@@ -15,16 +15,16 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
     @course.user_id = session[:user_id]
     if @course.save
-      flash[:notice] = 'Course Added Successfully'
-      redirect_to(action: 'index')
+      flash[:success] = "#{@course.name} added successfully"
+      redirect_to user_courses_path
     else
       if @course.errors
-        flash[:notice] = ''
+        flash[:danger] = ''
         @course.errors.full_messages.each do |message|
-          flash[:notice] << message + '  '
+          flash[:danger] << message + '.  '
         end
       end
-      redirect_to(action: 'new')
+      redirect_to new_user_course_path
     end
   end
 
@@ -37,16 +37,17 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     if @course.update_attributes(course_params)
       redirect_to user_courses_path(User.find(session[:user_id]).id)
-      flash[:notice] = 'Course Updated Successfully'
+      flash[:success] = "#{@course.name} updated successfully"
     else
-      flash[:notice] = 'Course could not be updated'
-      redirect_to(action: 'edit')
+      flash[:danger] = "#{@course.name} could not be updated"
+      redirect_to edit_user_course_path
     end
   end
 
   def destroy
-    # flash[:notice] = "#{course.name} Deleted Successfully"
-    course = Course.find(params[:id]).destroy
+    course = Course.find(params[:id])
+    flash[:success] = "#{course.name} deleted successfully"
+    course.destroy
     redirect_to user_courses_path(User.find(session[:user_id]).id)
   end
 
