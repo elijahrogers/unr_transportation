@@ -1,10 +1,3 @@
-<%= render 'layouts/nav_menu', links: [{ text: 'Login', path: 'users_login_path' }, { text: 'Sign Up', path: 'new_user_path'}], home: 'root_url' %>
-<% flash.each do |key, value| %>
-  <%= content_tag :div, class: "flash #{key}" do %>
-    <%= value %>
-    <i class="fa fa-times" aria-hidden="true"></i>
-  <% end %>
-<% end %>
 <p id='instructions'>Forgot Password</p>
 <br />
 <div id='forgot-password-form'>

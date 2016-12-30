@@ -2,20 +2,25 @@ class PasswordResetsController < ApplicationController
   before_action :get_user,   only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
-  layout 'users'
+  layout 'users_static'
 
   def new
   end
 
   def create
     @user = User.where(email: params[:password_reset][:email].downcase).first
-    if @user
+    unless @user
+      flash.now[:danger] = "Email address not found"
+      render 'new'
+      return
+    end
+    if @user && @user.activated?
       @user.create_reset_digest
       @user.send_password_reset_email
       flash[:success] = "Password reset link sent to #{@user.email}"
       redirect_to root_url
     else
-      flash.now[:danger] = "Email address not found"
+      flash.now[:danger] = "Account not activated"
       render 'new'
     end
   end

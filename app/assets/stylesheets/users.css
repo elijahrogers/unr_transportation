@@ -212,3 +212,6 @@ div .flash {
 .flash i {
   float: right;
 }
+#placeholderid {
+  width: 75%;
+}
