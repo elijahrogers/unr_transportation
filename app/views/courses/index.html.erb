@@ -1,3 +1,6 @@
+<% content_for :nav_menu do %>
+  <%= render 'layouts/nav_menu', links: [{ text: 'Home', path: 'users_main_path(@user)' }, { text: 'Logout', path: 'users_logout_path' }], home: 'edit_user_path(@user)' %>
+<% end %>
 <p id='instructions'>Your Courses:</p>
 <br />
 <div id='course-list'>

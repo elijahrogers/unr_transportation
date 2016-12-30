@@ -215,3 +215,7 @@ div .flash {
 #placeholderid {
   width: 75%;
 }
+#course-list, .new_course, #course-form {
+  margin: 0 auto;
+  width: 75%;
+}
