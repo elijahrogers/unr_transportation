@@ -61,7 +61,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'flashes success message on update' do
-        expect(flash[:notice]).to match('Success')
+        expect(flash[:success]).to match('Success')
       end
 
       it { should redirect_to(action: :main) }
@@ -82,25 +82,25 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe 'DELETE #destroy' do
-    before(:each) do
-      @user = User.create({first_name: 'Johnny', last_name: 'Appleseed', email: 'jappleseed@example.com', password: 'password', activated: true})
-      request.session[:user_id] = @user.id
-      request.session[:email] = @user.email
-    end
-    it 'clears session data' do
-      delete :destroy, id: @user.id
-      expect(session[:user_id]).to eq(nil)
-      expect(session[:email]).to eq(nil)
-    end
-    it 'destroys user' do
-      expect{delete :destroy, :id => @user.id}.to change(User, :count).by(-1)
-    end
-    it do
-      delete :destroy, id: @user.id
-      should redirect_to(root_url)
-    end
-  end
+  # describe 'DELETE #destroy' do
+  #   before(:each) do
+  #     @user = User.create({first_name: 'Johnny', last_name: 'Appleseed', email: 'jappleseed@example.com', password: 'password', activated: true})
+  #     request.session[:user_id] = @user.id
+  #     request.session[:email] = @user.email
+  #   end
+  #   it 'clears session data' do
+  #     delete :destroy, id: @user.id
+  #     expect(session[:user_id]).to eq(nil)
+  #     expect(session[:email]).to eq(nil)
+  #   end
+  #   it 'destroys user' do
+  #     expect{delete :destroy, :id => @user.id}.to change(User, :count).by(-1)
+  #   end
+  #   it do
+  #     delete :destroy, id: @user.id
+  #     should redirect_to(root_url)
+  #   end
+  # end
 
   describe 'GET #login' do
     it 'returns http success' do

@@ -40,12 +40,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    session[:email] = nil
-    session[:user_id] = nil
-    user = User.find(params[:id]).destroy
-    redirect_to root_path
-  end
+  # def destroy
+  #   session[:email] = nil
+  #   session[:user_id] = nil
+  #   user = User.find(params[:id]).destroy
+  #   redirect_to root_path
+  # end
 
   def login
   end

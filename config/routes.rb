@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   get 'application/update' => 'application#update'
-  resources :users, only: [:new, :create, :edit, :destroy, :update] do
+  resources :users, only: [:new, :create, :edit, :update] do
     resources :courses
   end
   resources :account_activations, only: [:edit]
