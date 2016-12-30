@@ -12,7 +12,11 @@
       <div id="map"></div>
       <div id='nav'>
         <h1>UNR Transportation</h1>
-        <%= render 'layouts/nav_menu', links: [{ text: 'Login', path: 'users_login_path' }, { text: 'Sign Up', path: 'new_user_path'}], home: 'root_url' %>
+        <% if content_for?(:nav_menu) %>
+          <%= yield :nav_menu %>
+        <% else %>
+          <%= render 'layouts/nav_menu', links: [{ text: 'Login', path: 'users_login_path' }, { text: 'Sign Up', path: 'new_user_path'}], home: 'root_url' %>
+        <% end %>
         <br />
         <% flash.each do |key, value| %>
           <%= content_tag :div, class: "flash #{key}" do %>

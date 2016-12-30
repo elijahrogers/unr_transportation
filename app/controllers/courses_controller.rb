@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  layout 'users'
+  layout 'users_static'
 
   def index
     @user = User.find(session[:user_id])

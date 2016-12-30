@@ -1,11 +1,3 @@
-<%= content_tag(:div, nil, id: 'map_data', data: {zones: @zones}) %>
-<%= render 'layouts/nav_menu', links: [{ text: 'Home', path: 'users_main_path(@user)' }, { text: 'Logout', path: 'users_logout_path' }], home: 'edit_user_path(@user)' %>
-<% flash.each do |key, value| %>
-  <%= content_tag :div, class: "flash #{key}" do %>
-    <%= value %>
-    <i class="fa fa-times" aria-hidden="true"></i>
-  <% end %>
-<% end %>
 <p id='instructions'>Your Courses:</p>
 <br />
 <div id='course-list'>
