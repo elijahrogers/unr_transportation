@@ -5,16 +5,16 @@
 <br />
 <div id='edit-form'>
   <%= form_for @user, url: user_path(id: @user.id) do |f| %>
-    <%= f.label :first_name %>
+    <%= f.label :first_name, 'First Name', class: 'label' %>
     <%= f.text_field :first_name %>
     <br />
-    <%= f.label :last_name %>
+    <%= f.label :last_name, 'Last Name', class: 'label' %>
     <%= f.text_field :last_name %>
     <br />
-    <%= f.label :email %>
+    <%= f.label :email, 'Email', class: 'label' %>
     <%= f.text_field :email %>
     <br />
-    <%= f.label :password %>
+    <%= f.label :password, 'Password', class: 'label' %>
     <%= f.password_field :password %>
     <br /><br />
     <%= f.submit 'Update Account'%>

@@ -2,10 +2,10 @@
 <br />
 <div id='login-form'>
   <%= form_tag users_attempt_login_path %>
-    <%= label_tag :email %>
+    <%= label_tag :email, 'Email', class: 'label' %>
     <%= text_field_tag :email %>
     <br />
-    <%= label_tag :password %>
+    <%= label_tag :password, 'Password', class: 'label' %>
     <%= password_field_tag :password %>
     <br />
     <%= link_to "(forgot password)", new_password_reset_path %>

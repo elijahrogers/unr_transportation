@@ -3,11 +3,11 @@
 <div id='forgot-password-form'>
   <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
     <%= hidden_field_tag :email, @user.email %>
-    <%= f.label :password, 'Password' %>
+    <%= f.label :password, 'Password', class: 'label' %>
     <%= f.password_field :password %>
-    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.label :password_confirmation, 'Confirm Password', class: 'label' %>
     <%= f.password_field :password_confirmation %>
     <br /><br /><br /><br />
-    <%= f.submit "Update password" %>
+    <%= f.submit 'Update password' %>
   <% end %>
 </div>

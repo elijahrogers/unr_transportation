@@ -2,7 +2,7 @@
 <br />
 <div id='forgot-password-form'>
   <%= form_for(:password_reset, url: password_resets_path, html: { id:'placeholderid' }) do |f| %>
-    <%= f.label :email %>
+    <%= f.label :email, 'Email', class: 'label' %>
     <%= f.email_field :email, class: 'form-control' %>
     <br /><br />
     <%= f.submit "Submit", class: "btn btn-primary" %>
