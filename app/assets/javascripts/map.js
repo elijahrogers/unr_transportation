@@ -221,11 +221,9 @@ function clearMarkers(array) {
 function loadInfo(){
   description = $('#description').html()
   if(description === 'null') {
-    $('#nav').css({'height': '20em'})
     $('#description').parent().hide()
   }
   else {
-    $('#nav').css({'height': '33em'})
     $('#description').parent().show()
   }
 };

@@ -87,10 +87,10 @@ form {
   position: absolute;
   left: 3em;
   top: 3em;
-  height: 22em;
   width: 25em;
   padding: 0px;
   border-radius: 5%;
+  padding-bottom: 1em;
   background-color: rgba(40, 40, 40, 0.95);
   -webkit-box-shadow: 31px 31px 68px -12px rgba(0,0,0,0.69);
   -moz-box-shadow: 31px 31px 68px -12px rgba(0,0,0,0.69);
@@ -101,10 +101,9 @@ form {
   background-color: rgba(173, 173, 173, 0.15);
   padding: 5px;
   border-radius: 5%;
-  position: absolute;
-  top: 315px;
-  left: 10px;
+  position: relative;
   width: 370px;
+  margin: 0 auto;
 }
 #instructions {
   text-align: center;

@@ -12,21 +12,9 @@ function initMap() {
 }
 
 $( document ).ready(function() {
-  if ($('.flash').is(':visible')){
-    $('#nav').css({'height': $('#nav').height() + $('.flash').height()});
-  }
-  $('.flash i').on('collapse', collapse);
   $('.flash i').click(function() {
-    $(this).parent().hide({duration: 800}, function(){
-      $(this).trigger('collapse');
-    });
+    $(this).parent().hide({duration: 800});
   });
-
-  function collapse(){
-    if ($('.flash').is(':hidden')){
-      $('#nav').css({'height': $('#nav').height() - $('.flash').height()});
-    }
-  }
 });
 
 // $('input[type=text],input[type=password]').focus(function(){
