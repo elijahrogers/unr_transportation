@@ -69,10 +69,12 @@ form {
 .edit_user {
   width: 75%;
   margin: 0 auto;
+  padding-bottom: 2.5em;
 }
 #signup-form {
   width: 75%;
   margin: 0 auto;
+  padding-bottom: 2.5em;
 }
 #content {
   width: 100%;
@@ -131,6 +133,7 @@ form {
 #login-form {
   width: 75%;
   margin: 0 auto;
+  padding-bottom: 2.5em;
 }
 td {
   font-size: 0.7em;
@@ -204,8 +207,10 @@ div .flash {
 }
 #placeholderid {
   width: 75%;
+  padding-bottom: 5em;
 }
 #course-list, .new_course, #course-form {
   margin: 0 auto;
   width: 75%;
+  padding-bottom: 2.5em;
 }
