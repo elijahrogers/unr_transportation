@@ -11,14 +11,7 @@
         <th>Building</th>
         <th colspan="2">Actions</th>
       </tr>
-    <% @courses.each do |course| %>
-      <tr>
-        <td> <%= truncate course.name, length: 20 %> </td>
-        <td> <%= truncate Building.find(course.building_id).name, length: 25 %> </td>
-        <td> <%= button_to 'Edit', edit_user_course_path(@user, course), method: :get, class: "button_to"  %> </td>
-        <td> <%= button_to 'Delete', user_course_path(@user, course), method: :delete, class: "button_to" %> </td>
-      </tr>
-    <% end %>
+      <%= render partial: "course", collection: @courses %>
     </table>
   <% end %>
 </div>
