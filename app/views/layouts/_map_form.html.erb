@@ -1,0 +1,25 @@
+<% grouped_options = {"Visitor"=>[],"Metered Parking"=>[],"Blue"=>[], "Purple"=>[], "Green"=>[], "Yellow"=>["1", "2", "3"], "Orange"=>[], "Silver"=>["1", "2", "3", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"], "Tan"=>[], "Evening"=>[], "East Campus Resident"=>[]} %>
+<% switches = { show_dispensers: 'Permit Dispensers', show_evcs: 'Electric Vehicle Charging Stations', show_pack_transit_stops: 'PACKTransit stops', show_pack_transit_routes: 'PACKTransit routes' } %>
+<% if defined?(additional_switches) %>
+  <% switches.update(additional_switches) %>
+<% end %>
+<br  />
+<div id ='form'>
+  <%= form_tag({ :action => "update", :controller => "application" }, :method => "get") do %>
+    <%= select_tag(:pass, options_for_select(['Blue', 'Purple', 'Green', 'Yellow', 'Orange', 'Silver', 'Tan', 'Evening', 'East Campus Resident', 'Visitor', 'Metered Parking'])) %>
+    <span id="hidden"><%= select_tag(:number, grouped_options_for_select(grouped_options)) %></span>
+    <%= text_field_tag(:time, time = Time.now.strftime("%I:%M")) %>
+    <br /><br />
+    <% switches.each do |id, name| %>
+      <div class="onoffswitch">
+        <%= check_box_tag id, 'true', false, class: "onoffswitch-checkbox" %>
+        <%= label_tag id, class: 'onoffswitch-label' do %>
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+        <% end %>
+      </div>
+      <%= content_tag :p, name, class: 'label' %>
+      <br />
+    <% end %>
+  <% end %>
+</div>
