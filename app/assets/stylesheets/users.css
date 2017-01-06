@@ -214,3 +214,6 @@ div .flash {
   width: 75%;
   padding-bottom: 2.5em;
 }
+.center {
+  text-align: center;
+}

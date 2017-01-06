@@ -15,7 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
-
+/rails_best_practices_output.html
 coverage
 
 *.txt

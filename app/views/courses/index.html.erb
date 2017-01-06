@@ -4,7 +4,9 @@
 <p id='instructions'>Your Courses:</p>
 <br />
 <div id='course-list'>
-  <% if !@courses.empty? %>
+  <% if @courses.empty? %>
+    <p class='center'>No courses found. Start by adding one below!</p>
+  <% else %>
     <table>
       <tr>
         <th>Course Name</th>
