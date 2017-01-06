@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-
-  layout 'users_static', except: :main
-
   before_action :confirm_logged_in, only: :main
+  layout 'users_static', except: :main
 
   def new
     @user = User.new
@@ -11,16 +9,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.send_activation_email
       flash[:notice] = "Activation link sent to #{@user.email}"
       redirect_to root_url
     else
-      if @user.errors
-        flash[:danger] = ''
-        @user.errors.full_messages.each do |message|
-          flash[:danger] << message + '. '
-        end
-      end
+      format_errors if @user.errors
       redirect_to new_user_path
     end
   end
@@ -54,17 +46,12 @@ class UsersController < ApplicationController
     @pass = ''
     find_available_zones
     @user = User.find(session[:user_id])
-    @courses = []
-    @user.courses.each do |course|
-      building = Building.find(course.building_id)
-      @courses.push([{name: course.name}, {lat: building.lat.to_f, lng: building.lng.to_f}])
-    end
-    @courses
+    add_courses
     render layout: 'users'
   end
 
   def logout
-    flash[:success] = "Bye #{User.where(id: session[:user_id]).first.first_name}"
+    flash[:success] = "Bye #{current_user.first_name}"
     session[:email] = nil
     session[:user_id] = nil
     redirect_to root_url
@@ -72,7 +59,7 @@ class UsersController < ApplicationController
 
   def attempt_login
     if params[:email].present? && params[:password].present?
-      found_user = User.where(:email => params[:email]).first
+      found_user = User.where(email: params[:email]).first
       if found_user && found_user.activated
         authorized_user = found_user.authenticate(params[:password])
       else
@@ -90,6 +77,27 @@ class UsersController < ApplicationController
       flash[:danger] = 'Inlvaid email or password'
       redirect_to users_login_path
     end
+  end
+
+  def format_errors
+    flash[:danger] = "The following errors were found: "
+    flash[:danger] += @user.errors.full_messages.to_sentence.downcase
+  end
+
+  def add_courses
+    @courses = []
+    @user.courses.each do |course|
+      building = Building.find(course.building_id)
+      @courses.push([
+        { name: course.name },
+        { lat: building.lat.to_f, lng: building.lng.to_f }
+      ])
+    end
+  end
+
+  def current_user
+    return unless session[:user_id]
+    User.find(session[:user_id])
   end
 
   private

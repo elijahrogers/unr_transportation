@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
+  after_create :send_activation_email
   has_secure_password
   has_many :courses
   validates :first_name, presence: true,
