@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :confirm_logged_in, only: :main
   layout 'users_static', except: :main
+  include UsersHelper
 
   def new
     @user = User.new
@@ -80,19 +81,13 @@ class UsersController < ApplicationController
   end
 
   def format_errors
-    flash[:danger] = "The following errors were found: "
+    flash[:danger] = 'The following errors were found: '
     flash[:danger] += @user.errors.full_messages.to_sentence.downcase
   end
 
   def add_courses
     @courses = []
-    @user.courses.each do |course|
-      building = Building.find(course.building_id)
-      @courses.push([
-        { name: course.name },
-        { lat: building.lat.to_f, lng: building.lng.to_f }
-      ])
-    end
+    @user.courses.each { |c| @courses << format_course(c) }
   end
 
   def current_user
@@ -103,10 +98,9 @@ class UsersController < ApplicationController
   private
 
   def confirm_logged_in
-    unless session[:email]
-      redirect_to users_login_path
-      return false
-    end
+    return true if session[:email]
+    redirect_to users_login_path
+    false
   end
 
   def user_params
