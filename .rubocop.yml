@@ -2,3 +2,19 @@ Rails:
   Enabled: true
 Documentation:
   Enabled: false
+Metrics/LineLength:
+  Max: 235
+Metrics/CyclomaticComplexity:
+  Max: 12
+Style/ClassAndModuleChildren:
+  Enabled: false
+Metrics/AbcSize:
+  Max: 120
+Metrics/ClassLength:
+  Max: 385
+Metrics/MethodLength:
+  Max: 110
+Metrics/PerceivedComplexity:
+  Max: 13
+Metrics/ModuleLength:
+  Max: 200
