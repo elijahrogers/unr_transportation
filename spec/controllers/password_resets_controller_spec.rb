@@ -91,7 +91,7 @@ RSpec.describe PasswordResetsController, type: :controller do
   end
 
   describe 'before actions' do
-    it { should use_before_action(:get_user) }
+    it { should use_before_action(:find_user) }
     it { should use_before_action(:valid_user) }
     it { should use_before_action(:check_expiration) }
   end
