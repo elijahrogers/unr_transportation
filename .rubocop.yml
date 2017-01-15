@@ -5,9 +5,10 @@ AllCops:
     - 'config/**/*'
     - 'vendor/**/*'
     - 'db/**/*'
-    - 'Guardfile'
     - 'Gemfile'
     - 'Rakefile'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
 Rails:
   Enabled: true
 Documentation:

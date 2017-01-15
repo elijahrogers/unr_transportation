@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-
   it { should use_before_action(:confirm_logged_in) }
 
-  describe "GET #new" do
-    it "returns http success" do
+  describe 'GET #new' do
+    it 'returns http success' do
       get :new
       expect(response).to have_http_status(:success)
     end
@@ -28,20 +27,20 @@ RSpec.describe UsersController, type: :controller do
 
       it { should set_flash }
 
-      it { should redirect_to(action: :new)}
+      it { should redirect_to(action: :new) }
     end
   end
 
-  describe "GET #edit" do
+  describe 'GET #edit' do
     let(:user) { create(:user) }
 
-    it "returns http success" do
-      get :edit, {id: user.id}, {user_id: user.id}
+    it 'returns http success' do
+      get :edit, { id: user.id }, user_id: user.id
       expect(response).to have_http_status(:success)
     end
 
     it 'finds user' do
-      get :edit, {id: user.id}, {user_id: user.id}
+      get :edit, { id: user.id }, user_id: user.id
       expect(assigns['user']).to eq(user)
     end
   end
@@ -52,7 +51,7 @@ RSpec.describe UsersController, type: :controller do
         @user = create(:activated_user)
         session[:user_id] = @user.id
         session[:email] = @user.email
-        put :update, {id: @user.id, user: {last_name: 'Appleseed', password: @user.password}}
+        put :update, id: @user.id, user: { last_name: 'Appleseed', password: @user.password }
         @user.reload
       end
 
@@ -72,7 +71,7 @@ RSpec.describe UsersController, type: :controller do
         @user = create(:activated_user)
         session[:user_id] = @user.id
         session[:email] = @user.email
-        put :update, {id: @user.id, user: {last_name: nil}}
+        put :update, id: @user.id, user: { last_name: nil }
         @user.reload
       end
 
@@ -149,7 +148,7 @@ RSpec.describe UsersController, type: :controller do
     context 'when activated with valid attributes' do
       before(:each) do
         @user = create(:activated_user)
-        put :attempt_login, {email: @user.email, password: @user.password}
+        put :attempt_login, email: @user.email, password: @user.password
       end
       it 'logs in activated user' do
         expect(session[:user_id]).to eq(@user.id)
@@ -164,7 +163,7 @@ RSpec.describe UsersController, type: :controller do
     context 'when unactivated with valid attributes' do
       before(:each) do
         user =  create(:user)
-        put :attempt_login, {email: user.email, password: user.password}
+        put :attempt_login, email: user.email, password: user.password
       end
       it 'does not log in user who is unactivated' do
         expect(session[:user_id]).to be_nil
@@ -173,7 +172,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      before {post :attempt_login, {email: nil, password: nil}}
+      before { post :attempt_login, email: nil, password: nil }
       it { should redirect_to(action: :login) }
       it { should set_flash }
     end

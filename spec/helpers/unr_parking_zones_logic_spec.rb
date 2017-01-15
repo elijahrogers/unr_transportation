@@ -3,7 +3,6 @@ include UNRParkingZones
 include UNRParkingZonesLogic
 
 describe 'UNR Parking Zones Logic' do
-
   it 'sets UNR outline initially' do
     @pass = ''
     find_available_zones
@@ -20,7 +19,7 @@ describe 'UNR Parking Zones Logic' do
     @pass = 'Green'
     find_available_zones
     expect(@zones).to match_array([blue1, blue2, blue3, blue4, blue5, blue6, green1, green2,
-                                  green3, green4, green5, green6, green7, green8, unr_outline])
+                                   green3, green4, green5, green6, green7, green8, unr_outline])
   end
 
   it 'finds correct purple zones' do
@@ -33,7 +32,7 @@ describe 'UNR Parking Zones Logic' do
     @pass = 'Orange'
     find_available_zones
     expect(@zones).to match_array([orange1, blue1, blue2, blue3, blue4, blue5, blue6, green1, green2,
-                                    green3, green4, green5, green6, green7, green8, unr_outline])
+                                   green3, green4, green5, green6, green7, green8, unr_outline])
   end
 
   it 'finds correct yellow zones' do
@@ -60,7 +59,7 @@ describe 'UNR Parking Zones Logic' do
     find_available_zones
     expect(@zones).to match_array([*silver1, *silver2, *silver3, *silver5, *silver6, *silver7,
                                    *silver8, *silver9, *silver10, *silver11, *silver12, *silver13,
-                                   *silver14, *silver15, *silver16, *silver17,blue1, blue2, blue3,
+                                   *silver14, *silver15, *silver16, *silver17, blue1, blue2, blue3,
                                    blue4, blue5, blue6, green1, green2, green3, green4, green5,
                                    green6, green7, green8, tan1, tan2, unr_outline])
   end
@@ -68,8 +67,8 @@ describe 'UNR Parking Zones Logic' do
   it 'finds correct tan zones' do
     @pass = 'Tan'
     find_available_zones
-    expect(@zones).to match_array([tan1, tan2,blue1, blue2, blue3, blue4, blue5, blue6, green1,
-                                green2, green3, green4, green5, green6, green7, green8, unr_outline])
+    expect(@zones).to match_array([tan1, tan2, blue1, blue2, blue3, blue4, blue5, blue6, green1,
+                                   green2, green3, green4, green5, green6, green7, green8, unr_outline])
   end
 
   it 'finds correct east campus resident zones during normal hours' do
@@ -84,7 +83,7 @@ describe 'UNR Parking Zones Logic' do
     @time = 500
     find_available_zones
     expect(@zones).to match_array([silver17[0], blue1, blue2, blue3, blue4, blue5, blue6, green1, green2,
-                                  green3, green4, green5, green6, green7, green8, tan1, tan2, unr_outline])
+                                   green3, green4, green5, green6, green7, green8, tan1, tan2, unr_outline])
   end
 
   it 'finds correct evening zones between 3:30 and 5:30 pm' do
@@ -99,10 +98,10 @@ describe 'UNR Parking Zones Logic' do
     @time = 600
     find_available_zones
     expect(@zones).to match_array([*silver1, *silver2, *silver3, *silver5, *silver6, *silver7,
-                              *silver8, *silver9, *silver10, *silver11, *silver12, *silver13,
-                              *silver14, *silver15, *silver16, *silver17, blue1, blue2, blue3,
-                              blue4, blue5, blue6, green1, green2, green3, green4, green5,
-                              green6, green7, green8, tan1, tan2, unr_outline])
+                                   *silver8, *silver9, *silver10, *silver11, *silver12, *silver13,
+                                   *silver14, *silver15, *silver16, *silver17, blue1, blue2, blue3,
+                                   blue4, blue5, blue6, green1, green2, green3, green4, green5,
+                                   green6, green7, green8, tan1, tan2, unr_outline])
   end
 
   it 'finds correct evening zones during normal hours' do
