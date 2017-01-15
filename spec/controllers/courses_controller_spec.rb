@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController, type: :controller do
-
   describe 'GET #index' do
     before do
       @user = create(:user)
@@ -94,7 +93,7 @@ RSpec.describe CoursesController, type: :controller do
         post :update, user_id: @course.user.id, course: { name: nil }, id: @course.id
       end
       it { should set_flash }
-      it { should redirect_to edit_user_course_path}
+      it { should redirect_to edit_user_course_path }
     end
   end
 
@@ -103,7 +102,7 @@ RSpec.describe CoursesController, type: :controller do
       @course = create(:course)
       session[:user_id] = @course.user.id
       session[:email] = @course.user.email
-      get :destroy, { user_id: @course.user_id, id: @course.id }
+      get :destroy, user_id: @course.user_id, id: @course.id
     end
     it 'destroys course' do
       expect(Course.where(id: @course.id).first).to be_nil

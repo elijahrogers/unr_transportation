@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe PasswordResetsController, type: :controller do
-
   describe 'POST #create' do
     context 'for user with account' do
       before do
         @user = create(:activated_user)
-        post :create, {password_reset: {email: @user.email}, commit: 'Submit'}
+        post :create, password_reset: { email: @user.email }, commit: 'Submit'
         @user.reload
       end
       it 'finds user with account' do
@@ -23,7 +22,7 @@ RSpec.describe PasswordResetsController, type: :controller do
     end
     context 'for user without account' do
       before do
-        post :create, {password_reset: {email: 'user@without.account'}, commit: 'Submit'}
+        post :create, password_reset: { email: 'user@without.account' }, commit: 'Submit'
       end
       it { should set_flash.now }
       it { should render_template('new') }

@@ -1,3 +1,13 @@
+AllCops:
+  Exclude:
+    - 'lib/*'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'Guardfile'
+    - 'Gemfile'
+    - 'Rakefile'
 Rails:
   Enabled: true
 Documentation:
