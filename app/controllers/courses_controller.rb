@@ -12,7 +12,8 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(course_params, user_id: session[:user_id])
+    current_user = User.find(session[:user_id])
+    @course = current_user.courses.new(course_params)
     if @course.save
       flash[:success] = "#{@course.name} added successfully"
       redirect_to user_courses_path

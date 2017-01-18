@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :course do
-    building_id 67
+    building_id 1
     name 'First Class'
     user
   end

@@ -1,6 +1,6 @@
 module UsersHelper
   def format_course(course)
-    building = Building.find(course.building_id)
+    building = course.building
     [
       { name: course.name },
       {
