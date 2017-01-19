@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def create_password_reset
-    return unless self.activated?
+    return unless activated?
     create_reset_digest
     send_password_reset_email
   end
