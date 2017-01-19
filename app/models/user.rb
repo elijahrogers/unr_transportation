@@ -52,6 +52,12 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
+  def create_password_reset
+    return unless self.activated?
+    create_reset_digest
+    send_password_reset_email
+  end
+
   private
 
   def create_activation_digest

@@ -1,4 +1,9 @@
-module UsersHelper
+module Common
+  def format_errors(obj)
+    flash[:danger] = 'The following errors were found: '
+    flash[:danger] += obj.errors.full_messages.to_sentence.downcase
+  end
+
   def format_course(course)
     building = course.building
     [

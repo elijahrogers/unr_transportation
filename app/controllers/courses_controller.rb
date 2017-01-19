@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   layout 'users_static'
+  include Common
 
   def index
     @user = User.find(session[:user_id])
@@ -18,12 +19,7 @@ class CoursesController < ApplicationController
       flash[:success] = "#{@course.name} added successfully"
       redirect_to user_courses_path
     else
-      if @course.errors
-        flash[:danger] = ''
-        @course.errors.full_messages.each do |message|
-          flash[:danger] << message + '.  '
-        end
-      end
+      format_errors(@course) if @course.errors
       redirect_to new_user_course_path
     end
   end

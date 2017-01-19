@@ -14,9 +14,7 @@ class PasswordResetsController < ApplicationController
       render 'new'
       return
     end
-    if @user && @user.activated?
-      @user.create_reset_digest
-      @user.send_password_reset_email
+    if @user.create_password_reset
       flash[:success] = "Password reset link sent to #{@user.email}"
       redirect_to root_url
     else

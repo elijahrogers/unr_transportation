@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :confirm_logged_in, only: :main
   layout 'users_static', except: :main
-  include UsersHelper
+  include Common
 
   def new
     @user = User.new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Activation link sent to #{@user.email}"
       redirect_to root_url
     else
-      format_errors if @user.errors
+      format_errors(@user) if @user.errors
       redirect_to new_user_path
     end
   end
@@ -78,11 +78,6 @@ class UsersController < ApplicationController
       flash[:danger] = 'Inlvaid email or password'
       redirect_to users_login_path
     end
-  end
-
-  def format_errors
-    flash[:danger] = 'The following errors were found: '
-    flash[:danger] += @user.errors.full_messages.to_sentence.downcase
   end
 
   def add_courses
